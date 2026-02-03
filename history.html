@@ -473,6 +473,92 @@
             left: -12.5px;
         }
 
+        /* ==================== TRANSCENDENTALIST SECTION ==================== */
+        .transcendentalist-section {
+            padding: 5rem 0;
+            background-color: var(--pine-green);
+            color: var(--white);
+        }
+
+        .transcendentalist-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .transcendentalist-section .section-title h2:after {
+            background-color: var(--sky-blue);
+        }
+
+        .transcendentalist-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .transcendentalist-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .transcendentalist-quote {
+            font-style: italic;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin: 3rem auto;
+            max-width: 700px;
+            color: var(--sky-blue);
+            font-family: 'Merriweather', serif;
+            border-left: 3px solid var(--sky-blue);
+            padding-left: 2rem;
+        }
+
+        /* ==================== APPEAL TO HEAVEN SECTION ==================== */
+        .appeal-section {
+            padding: 5rem 0;
+            background-color: var(--tree-brown);
+            color: var(--white);
+        }
+
+        .appeal-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .appeal-section .section-title h2:after {
+            background-color: var(--white);
+        }
+
+        .appeal-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .appeal-text {
+            flex: 1.2;
+        }
+
+        .appeal-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .appeal-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--deep-shadow);
+            border: 8px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .appeal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ==================== ERA SECTIONS ==================== */
         .era-section {
             padding: 5rem 0;
@@ -690,11 +776,11 @@
 
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 992px) {
-            .era-content {
+            .era-content, .appeal-content {
                 flex-direction: column;
             }
             
-            .era-image {
+            .era-image, .appeal-image {
                 order: -1;
             }
             
@@ -764,6 +850,11 @@
             .timeline-item:nth-child(even) .timeline-marker {
                 left: 8.5px;
             }
+            
+            .transcendentalist-quote {
+                font-size: 1.2rem;
+                padding-left: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -798,6 +889,11 @@
             
             .timeline-content {
                 padding: 1.5rem;
+            }
+            
+            .transcendentalist-quote {
+                font-size: 1.1rem;
+                padding-left: 1rem;
             }
         }
 
@@ -864,8 +960,8 @@
     <!-- History Hero Section -->
     <section class="history-hero">
         <div class="history-hero-content">
-            <h1>Layers of Time</h1>
-            <p>The story of the White Mountains isn't written in books—it's carved into the granite, whispered in the rivers, and remembered in the stories passed down through generations.</p>
+            <h1>Granite Echoes</h1>
+            <p>These mountains hold memories in their stone. From the first footsteps on their slopes to the last echoes of steam whistles in the valleys, every ridge and river tells a story.</p>
         </div>
     </section>
 
@@ -873,17 +969,18 @@
     <section class="timeline-section">
         <div class="container">
             <div class="section-title">
-                <h2>Timeline of the White Mountains</h2>
+                <h2>A Timeline Written in Stone</h2>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content fade-in">
-                        <div class="timeline-year">Pre-1600s</div>
+                        <div class="timeline-year">Long Before Maps</div>
                         <h3 class="timeline-title">The Abenaki Homeland</h3>
                         <div class="timeline-text">
-                            <p>For thousands of years before European arrival, the Abenaki people knew these mountains as their home. They called the region "Wōbanaki" — "Dawnland" — and understood the mountains not as wilderness to be conquered, but as a living relative to be respected.</p>
-                            <p>Their trails became our roads, their gathering places became our towns, and their wisdom about this land echoes in the names we still use today.</p>
+                            <p>For countless generations, the Abenaki people walked these mountains knowing them not as wilderness but as kin. They called this place Wōbanaki—Dawnland—where the first light touches the eastern slopes each morning.</p>
+                            <p>Their trails followed the natural lay of the land, paths worn smooth by moccasins moving between fishing spots and hunting grounds. When they gathered sweetgrass or tapped maple trees, they did so with a understanding that these mountains gave as much as they took.</p>
+                            <p>Those early paths became the roads we drive today. The quiet wisdom of living with the land instead of against it still whispers in the places they named, like Pemigewasset and Saco.</p>
                         </div>
                         <div class="timeline-image">
                             <img src="images/abenaki-era.jpg" alt="Abenaki cultural representation" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Native American cultural representation';">
@@ -895,10 +992,11 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content fade-in">
                         <div class="timeline-year">1642-1780s</div>
-                        <h3 class="timeline-title">First Settlers & Revolution</h3>
+                        <h3 class="timeline-title">Settlers & Revolution</h3>
                         <div class="timeline-text">
-                            <p>European settlers arrived with different eyes—seeing not a homeland to live within, but resources to extract. The first permanent settlement in the White Mountains region was established in 1642, though meaningful settlement didn't begin until the 1760s after the French and Indian Wars.</p>
-                            <p>During the Revolution, these mountains weren't just scenery—they were sanctuary. Patriots hid in these woods, and the region's self-reliant spirit made it fertile ground for revolutionary ideals.</p>
+                            <p>The first European families arrived with oxen and plows, looking at these mountains through different eyes. Where the Abenaki saw relationship, these newcomers saw resource—timber to cut, soil to turn, land to claim.</p>
+                            <p>Yet the mountains have a way of teaching their own lessons. Families who came to conquer found themselves instead adapting—learning to read the weather in cloud formations, to plant when the soil thawed, to store enough to last winters that seemed to stretch on forever.</p>
+                            <p>When revolution stirred in the colonies, these mountains became more than just hard ground to farm. They became hiding places for patriots, shelter for those who believed in a different kind of freedom. The same stubborn independence needed to survive here made fertile ground for revolutionary ideas.</p>
                         </div>
                         <div class="timeline-image">
                             <img src="images/early-settlement.jpg" alt="Early settler cabin in the mountains" onerror="this.src='https://images.unsplash.com/photo-1584467735871-8db9ac8d0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Early settler cabin';">
@@ -910,45 +1008,61 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content fade-in">
                         <div class="timeline-year">1800-1850</div>
-                        <h3 class="timeline-title">The Logging Era Begins</h3>
+                        <h3 class="timeline-title">Axes in the Forest</h3>
                         <div class="timeline-text">
-                            <p>As the young nation grew, so did its hunger for timber. The White Mountains became one of New England's most important sources of lumber. Teams of oxen dragged massive white pines down makeshift roads, and log drives turned spring rivers into floating highways of timber.</p>
-                            <p>This era created the logging camps and company towns that would define the region's economy—and its character—for generations. It was hard, dangerous work that demanded a particular kind of resilience.</p>
+                            <p>As New England towns grew, their hunger for timber grew with them. The White Mountains became a lumberyard for a building nation. Teams of oxen dragged massive white pines down mountainsides, leaving scars that would take a century to heal.</p>
+                            <p>Logging camps sprang up in remote valleys, places where men lived for months at a time, their world reduced to the sound of axes and the smell of sawdust. They worked from first light to last, their breath hanging in the cold air, their stories told around stoves at night.</p>
+                            <p>Come spring, the rivers ran with logs instead of water. Men with pike poles would guide them downstream, dancing across the floating timber with a balance that defied common sense. Many didn't make it to the mills—the rivers kept their secrets, as rivers do.</p>
                         </div>
                         <div class="timeline-image">
                             <img src="images/logging-era.jpg" alt="Historical logging in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historical logging';">
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transcendentalist Section -->
+    <section class="transcendentalist-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>When Thinkers Came to the Mountains</h2>
+            </div>
+            <div class="transcendentalist-content">
+                <p>In the mid-1800s, something shifted in how people saw these peaks. Writers and philosophers began arriving not to cut timber or farm the thin soil, but to listen. Men like Henry David Thoreau and Ralph Waldo Emerson came to these mountains and found something they couldn't find in Boston parlors or Harvard lecture halls.</p>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content fade-in">
-                        <div class="timeline-year">1850-1900</div>
-                        <h3 class="timeline-title">Tourism & Grand Hotels</h3>
-                        <div class="timeline-text">
-                            <p>As railroads reached into the mountains, a new kind of visitor arrived—not to cut timber, but to breathe the air. The "rusticators" came seeking health and scenery, and grand hotels rose to meet them.</p>
-                            <p>Places like the Crawford House and the Mount Washington Hotel offered luxury in the wilderness. This era created a tension that still defines the region today—between those who came to work the land and those who came to admire it.</p>
-                        </div>
-                        <div class="timeline-image">
-                            <img src="images/grand-hotel.jpg" alt="Historic grand hotel in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historic hotel';">
-                        </div>
-                    </div>
+                <p>Thoreau didn't come here to conquer peaks but to pay attention. He walked these trails with a notebook in his pocket, recording not just what he saw but what he felt—the way morning mist lifted from valleys, how sunlight changed the color of granite, what silence sounded like when you finally stopped long enough to hear it.</p>
+                
+                <p>These thinkers believed that God wasn't just in churches but in every leaf and stone. They argued that truth came not from books or authorities, but from direct experience of the world. In these mountains, they found proof that nature wasn't something separate from humanity, but the very ground of our being.</p>
+                
+                <div class="transcendentalist-quote">
+                    "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived."
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content fade-in">
-                        <div class="timeline-year">1911-Present</div>
-                        <h3 class="timeline-title">Conservation & National Forest</h3>
-                        <div class="timeline-text">
-                            <p>The Weeks Act of 1911 created the White Mountain National Forest, protecting 750,000 acres from the clear-cutting that had devastated much of New England. It was a revolutionary idea—that the government should buy back land to preserve it.</p>
-                            <p>This act didn't just save trees; it saved communities. It created a sustainable relationship between people and place that allowed both to thrive. The forest you hike through today exists because of that decision over a century ago.</p>
-                        </div>
-                        <div class="timeline-image">
-                            <img src="images/conservation-era.jpg" alt="White Mountain National Forest conservation" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='National Forest';">
-                        </div>
-                    </div>
+                <p>Their writings changed how Americans thought about wilderness. Suddenly, clear-cuts weren't just economic progress—they were desecration. Mountains weren't just obstacles or resources—they were teachers. This shift in thinking would eventually lead to the conservation movement that saved these very forests.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appeal to Heaven Section -->
+    <section class="appeal-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Flag That Still Flies in Spirit</h2>
+            </div>
+            <div class="appeal-content">
+                <div class="appeal-text">
+                    <p>During the American Revolution, a peculiar flag flew on some New England ships—a single pine tree against a white background, with the words "An Appeal to Heaven" arched above it. The design was simple but the meaning ran deep. When all earthly recourse fails, when kings and parliaments won't listen, there remains one final court: heaven itself.</p>
+                    
+                    <p>That pine tree could have grown on any north-facing slope in these mountains. The flag's message resonated here because it reflected a reality mountain people understood: sometimes you have to rely on something beyond human institutions. When winter comes early and the harvest isn't in, when the mill closes and jobs disappear, when the river floods and takes everything with it—you learn to appeal to something higher.</p>
+                    
+                    <p>The flag represented more than political rebellion. It was a declaration of spiritual independence—a belief that conscience matters more than convenience, that some principles are worth defending to the last, and that ultimate justice doesn't come from London or Philadelphia, but from a source beyond them all.</p>
+                    
+                    <p>That same spirit lives in these hills today. It's in the way neighbors still show up when a barn needs raising. It's in the quiet determination to keep a town alive when the economy says it should die. It's in the stubborn hope that plants crops knowing frost could come any September night.</p>
+                </div>
+                <div class="appeal-image">
+                    <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/An_Appeal_to_Heaven_Flag.svg/1200px-An_Appeal_to_Heaven_Flag.svg.png'; this.alt='Appeal to Heaven Flag';">
                 </div>
             </div>
         </div>
@@ -959,32 +1073,17 @@
         <div class="container">
             <div class="era-content">
                 <div class="era-text">
-                    <h2>The Timber That Built New England</h2>
-                    <p>There's a reason New England houses are so sturdy—much of their framing came from the White Mountains. From the 1820s through the early 1900s, logging wasn't just an industry here; it was a way of life that shaped families, communities, and the landscape itself.</p>
-                    <p>Winter was logging season. Men lived in remote camps from November to April, working from first light to last. They'd cut during the day and play cards or tell stories at night—the same stories you might hear in local diners today, just with different characters.</p>
-                    <p>Come spring, the log drives began. Rivers like the Saco and Androscoggin would run thick with timber, and men with pike poles would guide the logs downstream, leaping from one to another with a balance that seems impossible now. Many didn't make it to the mills—the rivers kept their secrets.</p>
-                    <p>You can still see the legacy in stone walls that follow old skid roads, in cellar holes where camps once stood, and in the second-growth forests that have reclaimed the clear-cuts. The logging era taught this region how to work hard, look out for each other, and respect—if not always preserve—the land that sustained them.</p>
+                    <h2>Winter in the Woods</h2>
+                    <p>There's a particular kind of quiet that settles over a logging camp in January. The snow muffles everything except the steady rhythm of axes and the creak of sled runners on ice. From November to April, men lived in these remote camps, their world reduced to the distance between bunkhouse and cutting area.</p>
+                    
+                    <p>They'd rise before dawn, eat breakfast by lantern light, and walk to the cutting area as stars faded from the sky. The work was hard and dangerous—trees could fall the wrong way, axes could slip, frostbite was a constant companion. At night they'd gather around the stove, playing cards or telling stories, the same stories you might hear in local diners today, just with different characters.</p>
+                    
+                    <p>These camps created a particular breed of man—tough, independent, but bound by a code of looking out for each other. When someone got hurt, everyone stopped work. When supplies ran low, they shared what they had. The mountains taught them that survival wasn't an individual achievement but a collective responsibility.</p>
+                    
+                    <p>You can still find traces of that era if you know where to look—stone walls that follow old skid roads, cellar holes where cook shacks once stood, second-growth forests that have slowly healed the scars of clear-cuts. The logging years left their mark on both the landscape and the character of the people who call these mountains home.</p>
                 </div>
                 <div class="era-image">
                     <img src="images/logging-camp.jpg" alt="Historical logging camp in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Logging camp';">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Railroad Era Section -->
-    <section class="era-section">
-        <div class="container">
-            <div class="era-content reverse">
-                <div class="era-text">
-                    <h2>Rails Through the Mountains</h2>
-                    <p>Before the railroads came, getting to the White Mountains meant days of difficult travel by coach or on foot. When the first trains arrived in the 1850s, they didn't just bring tourists—they transformed how people thought about these mountains.</p>
-                    <p>The most famous was the Mount Washington Cog Railway, completed in 1869. It was a marvel of engineering—the world's first mountain-climbing cog railway, built at a time when many thought the summit would never be accessible to ordinary people. The "Railway to the Moon," they called it.</p>
-                    <p>Other lines followed, connecting Boston and New York to the mountains. Suddenly, factory workers from Lowell could spend a week breathing mountain air. Artists could sketch peaks they'd only read about. And families who'd lived isolated lives in mountain valleys found themselves connected to the wider world.</p>
-                    <p>The railroads created a seasonal rhythm that still defines the region. Summer meant tourists and income; winter meant quiet and preparation. They also created the trail networks we use today—many hiking trails began as paths from train stations to scenic views.</p>
-                </div>
-                <div class="era-image">
-                    <img src="images/historic-railroad.jpg" alt="Historic railroad through the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1515168833906-d2a3b82b5d70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historic railroad';">
                 </div>
             </div>
         </div>
@@ -994,7 +1093,7 @@
     <section class="sites-section">
         <div class="container">
             <div class="section-title">
-                <h2>Places Where History Lives</h2>
+                <h2>Places That Remember</h2>
             </div>
             <div class="sites-grid">
                 <div class="site-card fade-in">
@@ -1003,7 +1102,7 @@
                     </div>
                     <div class="site-info">
                         <h3>Crawford Notch</h3>
-                        <p>The gateway through the Presidential Range, used by Abenaki for centuries before becoming the main route for settlers and later, the railroad. The Willey House disaster of 1826, where an entire family perished in a landslide, became a cautionary tale about the mountains' power.</p>
+                        <p>The narrow pass through the Presidential Range has been a passageway for as long as people have lived here. The Abenaki used it, settlers widened it, and the railroad eventually followed its course. In 1826, the Willey family built a house here, only to be buried by a landslide that spared their house but took their lives. Their story became a cautionary tale about the mountains' power.</p>
                         <ul class="site-details">
                             <li><i class="fas fa-map-marker-alt"></i> Route 302, Hart's Location</li>
                             <li><i class="fas fa-history"></i> Used since pre-colonial times</li>
@@ -1017,8 +1116,8 @@
                         <img src="images/old-man-site.jpg" alt="Old Man of the Mountain historical site" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Old Man of the Mountain';">
                     </div>
                     <div class="site-info">
-                        <h3>Old Man of the Mountain</h3>
-                        <p>For two centuries, this granite profile watched over Franconia Notch. First noted by white settlers in 1805, it became New Hampshire's state symbol. When it collapsed in 2003, it felt like losing a family member. The Profile Plaza now honors what the mountains give—and what they can take away.</p>
+                        <h3>The Old Man's Watch</h3>
+                        <p>For two centuries, that granite profile watched over Franconia Notch like a silent guardian. First noted by settlers in 1805, it became New Hampshire's state symbol—a face in the stone that seemed to embody the enduring spirit of these mountains. When it collapsed on a May night in 2003, it felt like losing a family elder. The memorial at Profile Plaza isn't just about what was lost, but about what endures.</p>
                         <ul class="site-details">
                             <li><i class="fas fa-map-marker-alt"></i> Franconia Notch State Park</li>
                             <li><i class="fas fa-mountain"></i> Collapsed May 3, 2003</li>
@@ -1032,8 +1131,8 @@
                         <img src="images/zealand-valley.jpg" alt="Zealand Valley historical area" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Zealand Valley';">
                     </div>
                     <div class="site-info">
-                        <h3>Zealand Valley</h3>
-                        <p>Once home to a bustling logging community with its own railroad, post office, and school. Today, only foundations remain in the quiet valley. The Zealand Trail follows the old railroad bed, and if you listen carefully in the right places, you might still hear echoes of steam whistles and sawmills.</p>
+                        <h3>Zealand Valley's Echoes</h3>
+                        <p>Today it's a quiet valley where the only sounds are wind in the pines and water over stones. But a century ago, this was a bustling community with its own railroad, post office, school, and homes for hundreds of people. The Zealand Trail follows the old railroad bed, and if you walk it on a still evening, you might catch an echo of steam whistles or the distant sound of sawmills that once defined this place.</p>
                         <ul class="site-details">
                             <li><i class="fas fa-map-marker-alt"></i> Near Twin Mountain</li>
                             <li><i class="fas fa-tree"></i> Former logging community</li>
@@ -1116,7 +1215,7 @@
             }
         });
         
-        // Initialize timeline animations
+        // Initialize animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
