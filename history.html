@@ -21,6 +21,8 @@
             --transparent-brown: rgba(139, 69, 19, 0.9);
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --deep-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --cream: #fdfaf5;
+            --light-brown: #f5f0e8;
         }
 
         * {
@@ -38,7 +40,7 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark-gray);
-            background-color: var(--light-gray);
+            background-color: var(--cream);
             overflow-x: hidden;
             font-weight: 400;
         }
@@ -317,7 +319,7 @@
         /* ==================== TIMELINE SECTION ==================== */
         .timeline-section {
             padding: 5rem 0;
-            background-color: var(--light-gray);
+            background-color: var(--cream);
         }
 
         .section-title {
@@ -380,11 +382,12 @@
 
         .timeline-content {
             padding: 2rem;
-            background-color: var(--white);
+            background-color: var(--light-brown);
             border-radius: 8px;
             box-shadow: var(--shadow);
             position: relative;
             transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 69, 19, 0.1);
         }
 
         .timeline-content:hover {
@@ -436,7 +439,7 @@
             width: 20px;
             height: 20px;
             right: -10px;
-            background-color: var(--white);
+            background-color: var(--light-brown);
             top: 40px;
             transform: rotate(45deg);
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -448,7 +451,7 @@
             width: 20px;
             height: 20px;
             left: -10px;
-            background-color: var(--white);
+            background-color: var(--light-brown);
             top: 40px;
             transform: rotate(45deg);
             box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -565,11 +568,11 @@
         }
 
         .era-section:nth-child(odd) {
-            background-color: var(--white);
+            background-color: var(--light-brown);
         }
 
         .era-section:nth-child(even) {
-            background-color: var(--light-gray);
+            background-color: var(--cream);
         }
 
         .era-content {
