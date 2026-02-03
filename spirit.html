@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History | White Mountains Spirit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pine-green: #0a5c36;
+            --sky-blue: #87ceeb;
+            --tree-brown: #8b4513;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #444444;
+            --transparent-green: rgba(10, 92, 54, 0.95);
+            --transparent-brown: rgba(139, 69, 19, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --deep-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--pine-green);
+            margin-right: 0.75rem;
+        }
+
+        .logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--tree-brown);
+            margin-top: 0.1rem;
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-desktop ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-desktop li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active a {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--tree-brown);
+            left: 0;
+            bottom: -5px;
+            animation: underlineSlide 0.3s ease;
+        }
+
+        @keyframes underlineSlide {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Mobile Navigation Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--tree-brown);
+        }
+
+        /* Mobile Navigation */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--white);
+            z-index: 1001;
+            padding: 2rem;
+            box-shadow: var(--deep-shadow);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+        }
+
+        .nav-mobile.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+        }
+
+        .mobile-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--pine-green);
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+        }
+
+        .nav-mobile ul {
+            list-style: none;
+        }
+
+        .nav-mobile li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-mobile a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile a:hover {
+            background-color: rgba(10, 92, 54, 0.05);
+            color: var(--pine-green);
+            transform: translateX(5px);
+        }
+
+        .nav-mobile li.active a {
+            background-color: rgba(10, 92, 54, 0.1);
+            color: var(--pine-green);
+            font-weight: 600;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==================== HISTORY HERO ==================== */
+        .history-hero {
+            height: 70vh;
+            background: 
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
+                url('images/history-banner.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            margin-bottom: 4rem;
+        }
+
+        .history-hero-content {
+            max-width: 900px;
+            padding: 3rem;
+        }
+
+        .history-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .history-hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* ==================== TIMELINE SECTION ==================== */
+        .timeline-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--tree-brown);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--tree-brown);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-year {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--tree-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--pine-green);
+        }
+
+        .timeline-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--medium-gray);
+        }
+
+        .timeline-image {
+            margin-top: 1.5rem;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .timeline-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            top: 40px;
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background-color: var(--white);
+            top: 40px;
+            transform: rotate(45deg);
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--pine-green);
+            border: 4px solid var(--tree-brown);
+            top: 40px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -12.5px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -12.5px;
+        }
+
+        /* ==================== ERA SECTIONS ==================== */
+        .era-section {
+            padding: 5rem 0;
+        }
+
+        .era-section:nth-child(odd) {
+            background-color: var(--white);
+        }
+
+        .era-section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        .era-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .era-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .era-text {
+            flex: 1.2;
+        }
+
+        .era-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            line-height: 1.8;
+        }
+
+        .era-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--deep-shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .era-image:hover {
+            transform: translateY(-10px);
+        }
+
+        .era-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ==================== HISTORIC SITES SECTION ==================== */
+        .sites-section {
+            padding: 5rem 0;
+            background-color: var(--pine-green);
+            color: var(--white);
+        }
+
+        .sites-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .sites-section .section-title h2:after {
+            background-color: var(--sky-blue);
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .site-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .site-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .site-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .site-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .site-card:hover .site-image img {
+            transform: scale(1.05);
+        }
+
+        .site-info {
+            padding: 2rem;
+        }
+
+        .site-info h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .site-info p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .site-details {
+            list-style: none;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .site-details li {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .site-details i {
+            margin-right: 0.5rem;
+            color: var(--sky-blue);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--sky-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--sky-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 992px) {
+            .era-content {
+                flex-direction: column;
+            }
+            
+            .era-image {
+                order: -1;
+            }
+            
+            .history-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .timeline:before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 20px;
+                left: 0 !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:after,
+            .timeline-item:nth-child(even) .timeline-content:after {
+                left: -10px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-marker,
+            .timeline-item:nth-child(even) .timeline-marker {
+                left: 18.5px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .history-hero {
+                padding-top: 70px;
+                height: 60vh;
+            }
+            
+            .history-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .history-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-mobile {
+                width: 85%;
+            }
+            
+            .timeline-item {
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-marker,
+            .timeline-item:nth-child(even) .timeline-marker {
+                left: 8.5px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .history-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .history-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.9rem;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-mountain"></i></div>
+                <div class="logo-text">White Mountains<br><span>Spirit & Heritage</span></div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="history.html">History</a></li>
+                    <li><a href="people.html">The People</a></li>
+                    <li><a href="transcendentalism.html">Transcendentalism</a></li>
+                    <li><a href="appeal.html">Appeal to Heaven</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="nav-mobile" id="navMobile">
+        <div class="mobile-header">
+            <div class="mobile-logo">White Mountains Spirit</div>
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="history.html">History</a></li>
+            <li><a href="people.html">The People</a></li>
+            <li><a href="transcendentalism.html">Transcendentalism</a></li>
+            <li><a href="appeal.html">Appeal to Heaven</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- History Hero Section -->
+    <section class="history-hero">
+        <div class="history-hero-content">
+            <h1>Layers of Time</h1>
+            <p>The story of the White Mountains isn't written in books—it's carved into the granite, whispered in the rivers, and remembered in the stories passed down through generations.</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Timeline of the White Mountains</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content fade-in">
+                        <div class="timeline-year">Pre-1600s</div>
+                        <h3 class="timeline-title">The Abenaki Homeland</h3>
+                        <div class="timeline-text">
+                            <p>For thousands of years before European arrival, the Abenaki people knew these mountains as their home. They called the region "Wōbanaki" — "Dawnland" — and understood the mountains not as wilderness to be conquered, but as a living relative to be respected.</p>
+                            <p>Their trails became our roads, their gathering places became our towns, and their wisdom about this land echoes in the names we still use today.</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/abenaki-era.jpg" alt="Abenaki cultural representation" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Native American cultural representation';">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content fade-in">
+                        <div class="timeline-year">1642-1780s</div>
+                        <h3 class="timeline-title">First Settlers & Revolution</h3>
+                        <div class="timeline-text">
+                            <p>European settlers arrived with different eyes—seeing not a homeland to live within, but resources to extract. The first permanent settlement in the White Mountains region was established in 1642, though meaningful settlement didn't begin until the 1760s after the French and Indian Wars.</p>
+                            <p>During the Revolution, these mountains weren't just scenery—they were sanctuary. Patriots hid in these woods, and the region's self-reliant spirit made it fertile ground for revolutionary ideals.</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/early-settlement.jpg" alt="Early settler cabin in the mountains" onerror="this.src='https://images.unsplash.com/photo-1584467735871-8db9ac8d0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Early settler cabin';">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content fade-in">
+                        <div class="timeline-year">1800-1850</div>
+                        <h3 class="timeline-title">The Logging Era Begins</h3>
+                        <div class="timeline-text">
+                            <p>As the young nation grew, so did its hunger for timber. The White Mountains became one of New England's most important sources of lumber. Teams of oxen dragged massive white pines down makeshift roads, and log drives turned spring rivers into floating highways of timber.</p>
+                            <p>This era created the logging camps and company towns that would define the region's economy—and its character—for generations. It was hard, dangerous work that demanded a particular kind of resilience.</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/logging-era.jpg" alt="Historical logging in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historical logging';">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content fade-in">
+                        <div class="timeline-year">1850-1900</div>
+                        <h3 class="timeline-title">Tourism & Grand Hotels</h3>
+                        <div class="timeline-text">
+                            <p>As railroads reached into the mountains, a new kind of visitor arrived—not to cut timber, but to breathe the air. The "rusticators" came seeking health and scenery, and grand hotels rose to meet them.</p>
+                            <p>Places like the Crawford House and the Mount Washington Hotel offered luxury in the wilderness. This era created a tension that still defines the region today—between those who came to work the land and those who came to admire it.</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/grand-hotel.jpg" alt="Historic grand hotel in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historic hotel';">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content fade-in">
+                        <div class="timeline-year">1911-Present</div>
+                        <h3 class="timeline-title">Conservation & National Forest</h3>
+                        <div class="timeline-text">
+                            <p>The Weeks Act of 1911 created the White Mountain National Forest, protecting 750,000 acres from the clear-cutting that had devastated much of New England. It was a revolutionary idea—that the government should buy back land to preserve it.</p>
+                            <p>This act didn't just save trees; it saved communities. It created a sustainable relationship between people and place that allowed both to thrive. The forest you hike through today exists because of that decision over a century ago.</p>
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/conservation-era.jpg" alt="White Mountain National Forest conservation" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='National Forest';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logging Era Section -->
+    <section class="era-section">
+        <div class="container">
+            <div class="era-content">
+                <div class="era-text">
+                    <h2>The Timber That Built New England</h2>
+                    <p>There's a reason New England houses are so sturdy—much of their framing came from the White Mountains. From the 1820s through the early 1900s, logging wasn't just an industry here; it was a way of life that shaped families, communities, and the landscape itself.</p>
+                    <p>Winter was logging season. Men lived in remote camps from November to April, working from first light to last. They'd cut during the day and play cards or tell stories at night—the same stories you might hear in local diners today, just with different characters.</p>
+                    <p>Come spring, the log drives began. Rivers like the Saco and Androscoggin would run thick with timber, and men with pike poles would guide the logs downstream, leaping from one to another with a balance that seems impossible now. Many didn't make it to the mills—the rivers kept their secrets.</p>
+                    <p>You can still see the legacy in stone walls that follow old skid roads, in cellar holes where camps once stood, and in the second-growth forests that have reclaimed the clear-cuts. The logging era taught this region how to work hard, look out for each other, and respect—if not always preserve—the land that sustained them.</p>
+                </div>
+                <div class="era-image">
+                    <img src="images/logging-camp.jpg" alt="Historical logging camp in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Logging camp';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Railroad Era Section -->
+    <section class="era-section">
+        <div class="container">
+            <div class="era-content reverse">
+                <div class="era-text">
+                    <h2>Rails Through the Mountains</h2>
+                    <p>Before the railroads came, getting to the White Mountains meant days of difficult travel by coach or on foot. When the first trains arrived in the 1850s, they didn't just bring tourists—they transformed how people thought about these mountains.</p>
+                    <p>The most famous was the Mount Washington Cog Railway, completed in 1869. It was a marvel of engineering—the world's first mountain-climbing cog railway, built at a time when many thought the summit would never be accessible to ordinary people. The "Railway to the Moon," they called it.</p>
+                    <p>Other lines followed, connecting Boston and New York to the mountains. Suddenly, factory workers from Lowell could spend a week breathing mountain air. Artists could sketch peaks they'd only read about. And families who'd lived isolated lives in mountain valleys found themselves connected to the wider world.</p>
+                    <p>The railroads created a seasonal rhythm that still defines the region. Summer meant tourists and income; winter meant quiet and preparation. They also created the trail networks we use today—many hiking trails began as paths from train stations to scenic views.</p>
+                </div>
+                <div class="era-image">
+                    <img src="images/historic-railroad.jpg" alt="Historic railroad through the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1515168833906-d2a3b82b5d70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historic railroad';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historic Sites Section -->
+    <section class="sites-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Places Where History Lives</h2>
+            </div>
+            <div class="sites-grid">
+                <div class="site-card fade-in">
+                    <div class="site-image">
+                        <img src="images/crawford-notch.jpg" alt="Crawford Notch historical site" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Crawford Notch';">
+                    </div>
+                    <div class="site-info">
+                        <h3>Crawford Notch</h3>
+                        <p>The gateway through the Presidential Range, used by Abenaki for centuries before becoming the main route for settlers and later, the railroad. The Willey House disaster of 1826, where an entire family perished in a landslide, became a cautionary tale about the mountains' power.</p>
+                        <ul class="site-details">
+                            <li><i class="fas fa-map-marker-alt"></i> Route 302, Hart's Location</li>
+                            <li><i class="fas fa-history"></i> Used since pre-colonial times</li>
+                            <li><i class="fas fa-hiking"></i> Access to Appalachian Trail</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="site-card fade-in">
+                    <div class="site-image">
+                        <img src="images/old-man-site.jpg" alt="Old Man of the Mountain historical site" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Old Man of the Mountain';">
+                    </div>
+                    <div class="site-info">
+                        <h3>Old Man of the Mountain</h3>
+                        <p>For two centuries, this granite profile watched over Franconia Notch. First noted by white settlers in 1805, it became New Hampshire's state symbol. When it collapsed in 2003, it felt like losing a family member. The Profile Plaza now honors what the mountains give—and what they can take away.</p>
+                        <ul class="site-details">
+                            <li><i class="fas fa-map-marker-alt"></i> Franconia Notch State Park</li>
+                            <li><i class="fas fa-mountain"></i> Collapsed May 3, 2003</li>
+                            <li><i class="fas fa-landmark"></i> State symbol since 1945</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="site-card fade-in">
+                    <div class="site-image">
+                        <img src="images/zealand-valley.jpg" alt="Zealand Valley historical area" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Zealand Valley';">
+                    </div>
+                    <div class="site-info">
+                        <h3>Zealand Valley</h3>
+                        <p>Once home to a bustling logging community with its own railroad, post office, and school. Today, only foundations remain in the quiet valley. The Zealand Trail follows the old railroad bed, and if you listen carefully in the right places, you might still hear echoes of steam whistles and sawmills.</p>
+                        <ul class="site-details">
+                            <li><i class="fas fa-map-marker-alt"></i> Near Twin Mountain</li>
+                            <li><i class="fas fa-tree"></i> Former logging community</li>
+                            <li><i class="fas fa-hiking"></i> Zealand Trail follows old railroad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>White Mountains Spirit</h3>
+                    <div class="footer-about">
+                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="history.html"><i class="fas fa-chevron-right"></i> Historical Archives</a></li>
+                        <li><a href="people.html"><i class="fas fa-chevron-right"></i> Oral Histories</a></li>
+                        <li><a href="transcendentalism.html"><i class="fas fa-chevron-right"></i> Transcendentalist Writings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Share Your Story</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Research Inquiries</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 White Mountains Spirit. All rights reserved. This is a non-commercial educational resource.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation functionality
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileClose = document.getElementById('mobileClose');
+        const navMobile = document.getElementById('navMobile');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMobile.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileClose.addEventListener('click', closeMobileNav);
+        navOverlay.addEventListener('click', closeMobileNav);
+        
+        function closeMobileNav() {
+            navMobile.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-mobile a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // Initialize timeline animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items and site cards for fade-in animation
+        document.querySelectorAll('.timeline-content, .site-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
