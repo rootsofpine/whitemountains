@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcendentalism | White Mountains Spirit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pine-green: #0a5c36;
+            --sky-blue: #87ceeb;
+            --tree-brown: #8b4513;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #444444;
+            --transparent-green: rgba(10, 92, 54, 0.95);
+            --transparent-brown: rgba(139, 69, 19, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --deep-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --cream: #fdfaf5;
+            --light-brown: #f5f0e8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--cream);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--pine-green);
+            margin-right: 0.75rem;
+        }
+
+        .logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--tree-brown);
+            margin-top: 0.1rem;
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-desktop ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-desktop li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active a {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--tree-brown);
+            left: 0;
+            bottom: -5px;
+            animation: underlineSlide 0.3s ease;
+        }
+
+        @keyframes underlineSlide {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Mobile Navigation Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--tree-brown);
+        }
+
+        /* Mobile Navigation */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--white);
+            z-index: 1001;
+            padding: 2rem;
+            box-shadow: var(--deep-shadow);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+        }
+
+        .nav-mobile.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+        }
+
+        .mobile-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--pine-green);
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+        }
+
+        .nav-mobile ul {
+            list-style: none;
+        }
+
+        .nav-mobile li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-mobile a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile a:hover {
+            background-color: rgba(10, 92, 54, 0.05);
+            color: var(--pine-green);
+            transform: translateX(5px);
+        }
+
+        .nav-mobile li.active a {
+            background-color: rgba(10, 92, 54, 0.1);
+            color: var(--pine-green);
+            font-weight: 600;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==================== TRANSCENDENTALISM HERO ==================== */
+        .transcendentalism-hero {
+            height: 70vh;
+            background: 
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
+                url('images/transcendentalism-banner.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            margin-bottom: 4rem;
+        }
+
+        .transcendentalism-hero-content {
+            max-width: 900px;
+            padding: 3rem;
+        }
+
+        .transcendentalism-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .transcendentalism-hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* ==================== INTRODUCTION SECTION ==================== */
+        .intro-section {
+            padding: 5rem 0;
+            background-color: var(--cream);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--tree-brown);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+
+        /* ==================== KEY FIGURES SECTION ==================== */
+        .figures-section {
+            padding: 5rem 0;
+            background-color: var(--light-brown);
+        }
+
+        .figures-section .section-title h2 {
+            color: var(--pine-green);
+        }
+
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+
+        .figure-card {
+            background-color: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--deep-shadow);
+        }
+
+        .figure-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.05);
+        }
+
+        .figure-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .figure-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--pine-green);
+        }
+
+        .figure-dates {
+            font-size: 1rem;
+            color: var(--tree-brown);
+            font-weight: 500;
+        }
+
+        .figure-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .figure-quote {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            margin-top: auto;
+            font-style: italic;
+            color: var(--tree-brown);
+            line-height: 1.6;
+        }
+
+        /* ==================== WRITINGS SECTION ==================== */
+        .writings-section {
+            padding: 5rem 0;
+            background-color: var(--pine-green);
+            color: var(--white);
+        }
+
+        .writings-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .writings-section .section-title h2:after {
+            background-color: var(--sky-blue);
+        }
+
+        .writings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .writing-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .writing-card:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .writing-icon {
+            font-size: 2.5rem;
+            color: var(--sky-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .writing-card h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .writing-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .writing-meta {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ==================== MOUNTAIN INFLUENCE SECTION ==================== */
+        .influence-section {
+            padding: 5rem 0;
+            background-color: var(--cream);
+        }
+
+        .influence-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .influence-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+
+        .influence-quote {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-style: italic;
+            margin: 3rem auto;
+            max-width: 700px;
+            color: var(--tree-brown);
+            font-family: 'Merriweather', serif;
+            border-left: 3px solid var(--tree-brown);
+            padding-left: 2rem;
+        }
+
+        /* ==================== LEGACY SECTION ==================== */
+        .legacy-section {
+            padding: 5rem 0;
+            background-color: var(--tree-brown);
+            color: var(--white);
+        }
+
+        .legacy-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .legacy-section .section-title h2:after {
+            background-color: var(--white);
+        }
+
+        .legacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .legacy-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .legacy-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .legacy-point {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legacy-point h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .legacy-point p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--sky-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--sky-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 992px) {
+            .transcendentalism-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .figures-grid, .writings-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .transcendentalism-hero {
+                padding-top: 70px;
+                height: 60vh;
+            }
+            
+            .transcendentalism-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .transcendentalism-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-mobile {
+                width: 85%;
+            }
+            
+            .figure-image {
+                height: 250px;
+            }
+            
+            .writing-card {
+                padding: 2rem;
+            }
+            
+            .influence-quote {
+                font-size: 1.2rem;
+                padding-left: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .transcendentalism-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .transcendentalism-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.9rem;
+            }
+            
+            .figure-image {
+                height: 220px;
+            }
+            
+            .figure-content {
+                padding: 1.5rem;
+            }
+            
+            .influence-quote {
+                font-size: 1.1rem;
+                padding-left: 1rem;
+            }
+            
+            .legacy-point {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-mountain"></i></div>
+                <div class="logo-text">White Mountains<br><span>Spirit & Heritage</span></div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="people.html">Historical Figures</a></li>
+                    <li class="active"><a href="transcendentalism.html">Transcendentalism</a></li>
+                    <li><a href="appeal.html">Appeal to Heaven</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="nav-mobile" id="navMobile">
+        <div class="mobile-header">
+            <div class="mobile-logo">White Mountains Spirit</div>
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="people.html">Historical Figures</a></li>
+            <li class="active"><a href="transcendentalism.html">Transcendentalism</a></li>
+            <li><a href="appeal.html">Appeal to Heaven</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Transcendentalism Hero Section -->
+    <section class="transcendentalism-hero">
+        <div class="transcendentalism-hero-content">
+            <h1>Nature as Teacher</h1>
+            <p>How the White Mountains shaped a philosophical revolution that redefined America's relationship with wilderness and self-reliance.</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Transcendentalist Awakening</h2>
+            </div>
+            <div class="intro-content">
+                <p>In the mid-19th century, a group of New England thinkers began challenging established beliefs about God, nature, and the individual. They argued that truth wasn't found in churches or books, but in direct experience of the natural world. This philosophical movement—transcendentalism—found its perfect classroom in the White Mountains.</p>
+                
+                <p>While Ralph Waldo Emerson wrote about nature in the abstract, and Henry David Thoreau practiced simplicity at Walden Pond, it was in the White Mountains that these ideas were tested against actual wilderness. The sheer scale of these peaks, the raw power of their weather, the silence of their forests—all provided tangible evidence for transcendentalist claims about nature's spiritual power.</p>
+                
+                <p>Transcendentalists came to these mountains not as tourists seeking scenery, but as pilgrims seeking revelation. They believed that in wild places, away from society's distortions, one could hear a more authentic voice—what Emerson called the "Oversoul" and Thoreau described as the "higher laws."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Figures Section -->
+    <section class="figures-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Voices of the Movement</h2>
+            </div>
+            <div class="figures-grid">
+                <div class="figure-card fade-in">
+                    <div class="figure-image">
+                        <img src="images/emerson-portrait.jpg" alt="Ralph Waldo Emerson portrait" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ralph_Waldo_Emerson_ca1857_retouched.jpg/800px-Ralph_Waldo_Emerson_ca1857_retouched.jpg'; this.alt='Ralph Waldo Emerson';">
+                    </div>
+                    <div class="figure-content">
+                        <div class="figure-header">
+                            <h3>Ralph Waldo Emerson</h3>
+                            <div class="figure-dates">1803 - 1882</div>
+                        </div>
+                        <div class="figure-description">
+                            <p>While Emerson's primary transcendentalist writings came before his White Mountains visits, his 1858 trip to the region confirmed and deepened his beliefs. His essay "Nature" (1836) laid the philosophical groundwork, arguing that the natural world was not just matter but divine language.</p>
+                            <p>In the White Mountains, Emerson found the scale of wilderness he had written about. His journal entries from the trip show him wrestling with the practical implications of his philosophy—what does self-reliance mean when facing an actual mountain storm? How does one maintain composure before landscapes that dwarf human concerns?</p>
+                        </div>
+                        <div class="figure-quote">
+                            "In the woods, we return to reason and faith. There I feel that nothing can befall me in life—no disgrace, no calamity—which nature cannot repair."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="figure-card fade-in">
+                    <div class="figure-image">
+                        <img src="images/thoreau-portrait.jpg" alt="Henry David Thoreau portrait" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Henry_David_Thoreau.jpg/800px-Henry_David_Thoreau.jpg'; this.alt='Henry David Thoreau';">
+                    </div>
+                    <div class="figure-content">
+                        <div class="figure-header">
+                            <h3>Henry David Thoreau</h3>
+                            <div class="figure-dates">1817 - 1862</div>
+                        </div>
+                        <div class="figure-description">
+                            <p>Thoreau made multiple trips to the White Mountains in the 1840s and 1850s. His experiences here went beyond his Walden experiment—these were journeys into actual wilderness rather than managed woodlands. His ascent of Mount Washington in 1839, documented in his journal, became a touchstone for his understanding of wildness.</p>
+                            <p>In the White Mountains, Thoreau found what he called "raw matter"—nature untamed and uncompromised. His observations here informed his later environmental writings and his arguments for wilderness preservation. The mountains taught him that some places should remain beyond human control, as benchmarks against which to measure civilization's progress.</p>
+                        </div>
+                        <div class="figure-quote">
+                            "We need the tonic of wildness... We can never have enough of nature."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="figure-card fade-in">
+                    <div class="figure-image">
+                        <img src="images/thomas-starr-king-portrait.jpg" alt="Thomas Starr King portrait" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Thomas_Starr_King.jpg/800px-Thomas_Starr_King.jpg'; this.alt='Thomas Starr King';">
+                    </div>
+                    <div class="figure-content">
+                        <div class="figure-header">
+                            <h3>Thomas Starr King</h3>
+                            <div class="figure-dates">1824 - 1864</div>
+                        </div>
+                        <div class="figure-description">
+                            <p>A Unitarian minister who bridged transcendentalist philosophy with popular travel writing. His 1859 book "The White Hills: Their Legends, Landscape, and Poetry" became the most influential guide to the region in the mid-19th century. King didn't just describe scenery—he interpreted it through transcendentalist lenses.</p>
+                            <p>King saw the White Mountains as "sermons in stone," natural cathedrals where one could experience the divine directly. His writings made transcendentalist ideas accessible to ordinary tourists, teaching them to see wilderness not just as beautiful scenery but as spiritual text. He argued that mountains were moral teachers, their permanence reminding humans of eternal values.</p>
+                        </div>
+                        <div class="figure-quote">
+                            "The mountains are great stone prophets; they preach forever."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writings Section -->
+    <section class="writings-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Writings From the Mountains</h2>
+            </div>
+            <div class="writings-grid">
+                <div class="writing-card fade-in">
+                    <div class="writing-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>"The White Hills" (1859)</h3>
+                    <p>Thomas Starr King's influential guidebook that interpreted the White Mountains through transcendentalist philosophy. Rather than just listing distances and accommodations, King described the spiritual and emotional impact of each view. His book taught a generation of tourists how to see mountains as more than scenery.</p>
+                    <div class="writing-meta">Thomas Starr King • 1859 • Travel writing/Philosophy</div>
+                </div>
+                
+                <div class="writing-card fade-in">
+                    <div class="writing-icon">
+                        <i class="fas fa-journal-whills"></i>
+                    </div>
+                    <h3>Thoreau's White Mountains Journals</h3>
+                    <p>Thoreau's detailed journal entries from his 1839 and 1858 trips to the White Mountains. These unpublished writings show him working out ideas that would appear in "Walden" and his later essays. Particularly notable are his descriptions of Mount Washington's alpine zone and his reflections on wildness versus wilderness.</p>
+                    <div class="writing-meta">Henry David Thoreau • 1839-1858 • Journal entries</div>
+                </div>
+                
+                <div class="writing-card fade-in">
+                    <div class="writing-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3>"The Adirondacks" & Mountain Essays</h3>
+                    <p>While Emerson's essay focuses on New York's mountains, its philosophical framework directly applied to the White Mountains. His concept of nature as the "symbol of spirit" found perfect expression in these peaks. His later reflections on his 1858 White Mountains trip appear in letters and journal entries.</p>
+                    <div class="writing-meta">Ralph Waldo Emerson • 1858 • Essays and letters</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mountain Influence Section -->
+    <section class="influence-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How the Mountains Shaped the Philosophy</h2>
+            </div>
+            <div class="influence-content">
+                <p>The White Mountains provided transcendentalism with more than just beautiful scenery—they offered concrete evidence for abstract philosophical claims. When Emerson wrote about the "sublime" in nature, his readers could point to the Presidential Range. When Thoreau argued for wilderness preservation, he could cite his experiences in these mountains.</p>
+                
+                <p>Three aspects of the White Mountains particularly influenced transcendentalist thought:</p>
+                
+                <p><strong>Scale:</strong> The sheer size of these mountains demonstrated nature's power to dwarf human concerns. This physical reality gave weight to transcendentalist arguments about humility before the natural world.</p>
+                
+                <p><strong>Wildness:</strong> Unlike the managed woodlands around Concord, the White Mountains offered true wilderness—places where nature followed its own rules. This confirmed transcendentalist beliefs that some truths existed independent of human society.</p>
+                
+                <p><strong>Permanence:</strong> The granite backbone of these mountains, seemingly unchanging across human timescales, provided a metaphor for the eternal truths transcendentalists sought. Mountains became symbols of enduring values in a changing world.</p>
+                
+                <div class="influence-quote">
+                    "I am grateful for the White Mountains' ruggedness—they refuse to be tamed, reminding us that some things should remain beyond our control. In their wildness, we find a standard by which to measure our own civilized compromises."
+                </div>
+                
+                <p>The transcendentalist engagement with the White Mountains had practical consequences. Their writings helped shift public perception of wilderness from wasteland to sacred space. This philosophical shift would eventually support the conservation movement that led to the creation of the White Mountain National Forest in 1911.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legacy Section -->
+    <section class="legacy-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Transcendentalist Legacy</h2>
+            </div>
+            <div class="legacy-content">
+                <p>The transcendentalist encounter with the White Mountains created a lasting template for how Americans would understand and value wilderness. Their ideas, tested against these granite peaks, continue to shape our relationship with the natural world.</p>
+                
+                <div class="legacy-points">
+                    <div class="legacy-point fade-in">
+                        <h3>Wilderness as Spiritual Resource</h3>
+                        <p>Transcendentalists established the idea that wild places offer something essential to the human spirit—not just recreation, but restoration. This belief underlies today's conservation ethic and the designation of protected wilderness areas.</p>
+                    </div>
+                    
+                    <div class="legacy-point fade-in">
+                        <h3>Nature Writing Tradition</h3>
+                        <p>The detailed observations of Thoreau and King established a tradition of nature writing that continues today. Their practice of closely observing and reflecting on natural phenomena set standards for environmental literature.</p>
+                    </div>
+                    
+                    <div class="legacy-point fade-in">
+                        <h3>Environmental Ethics</h3>
+                        <p>By arguing that nature had intrinsic value beyond human use, transcendentalists planted seeds for modern environmental ethics. Their belief that we should preserve wild places for their own sake remains central to conservation philosophy.</p>
+                    </div>
+                    
+                    <div class="legacy-point fade-in">
+                        <h3>The White Mountains as Classroom</h3>
+                        <p>The transcendentalist practice of using these mountains as a place for philosophical inquiry continues today. Hikers, artists, and thinkers still come here seeking what Emerson called "an original relation to the universe."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>White Mountains Spirit</h3>
+                    <div class="footer-about">
+                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="history.html"><i class="fas fa-chevron-right"></i> Historical Archives</a></li>
+                        <li><a href="people.html"><i class="fas fa-chevron-right"></i> Historical Figures</a></li>
+                        <li><a href="transcendentalism.html"><i class="fas fa-chevron-right"></i> Transcendentalist Writings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Share Your Story</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Research Inquiries</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 White Mountains Spirit. All rights reserved. This is a non-commercial educational resource.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation functionality
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileClose = document.getElementById('mobileClose');
+        const navMobile = document.getElementById('navMobile');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMobile.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileClose.addEventListener('click', closeMobileNav);
+        navOverlay.addEventListener('click', closeMobileNav);
+        
+        function closeMobileNav() {
+            navMobile.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-mobile a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // Initialize animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for fade-in animation
+        document.querySelectorAll('.figure-card, .writing-card, .legacy-point').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
