@@ -21,6 +21,8 @@
             --transparent-brown: rgba(139, 69, 19, 0.9);
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --deep-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --cream: #fdfaf5;
+            --light-brown: #f5f0e8;
         }
 
         * {
@@ -38,7 +40,7 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark-gray);
-            background-color: var(--light-gray);
+            background-color: var(--cream);
             overflow-x: hidden;
             font-weight: 400;
         }
@@ -407,6 +409,8 @@
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             transition: transform 0.5s ease;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            background-color: var(--white);
         }
 
         .about-image:hover {
@@ -508,6 +512,7 @@
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             border: 8px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--white);
         }
 
         .flag-image img {
@@ -518,7 +523,7 @@
 
         /* Quote Section */
         .quote-section {
-            background-color: var(--light-gray);
+            background-color: var(--light-brown);
             padding: 5rem 0;
         }
 
