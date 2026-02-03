@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appeal to Heaven | White Mountains Spirit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pine-green: #0a5c36;
+            --sky-blue: #87ceeb;
+            --tree-brown: #8b4513;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #444444;
+            --transparent-green: rgba(10, 92, 54, 0.95);
+            --transparent-brown: rgba(139, 69, 19, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --deep-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --cream: #fdfaf5;
+            --light-brown: #f5f0e8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--cream);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--pine-green);
+            margin-right: 0.75rem;
+        }
+
+        .logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pine-green);
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--tree-brown);
+            margin-top: 0.1rem;
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-desktop ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-desktop li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active a {
+            color: var(--pine-green);
+        }
+
+        .nav-desktop li.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--tree-brown);
+            left: 0;
+            bottom: -5px;
+            animation: underlineSlide 0.3s ease;
+        }
+
+        @keyframes underlineSlide {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Mobile Navigation Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-toggle:hover {
+            color: var(--tree-brown);
+        }
+
+        /* Mobile Navigation */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--white);
+            z-index: 1001;
+            padding: 2rem;
+            box-shadow: var(--deep-shadow);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+        }
+
+        .nav-mobile.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(10, 92, 54, 0.1);
+        }
+
+        .mobile-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--pine-green);
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--pine-green);
+            cursor: pointer;
+        }
+
+        .nav-mobile ul {
+            list-style: none;
+        }
+
+        .nav-mobile li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-mobile a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile a:hover {
+            background-color: rgba(10, 92, 54, 0.05);
+            color: var(--pine-green);
+            transform: translateX(5px);
+        }
+
+        .nav-mobile li.active a {
+            background-color: rgba(10, 92, 54, 0.1);
+            color: var(--pine-green);
+            font-weight: 600;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==================== APPEAL HERO ==================== */
+        .appeal-hero {
+            height: 70vh;
+            background: 
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
+                url('images/appeal-flag-banner.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            margin-bottom: 4rem;
+        }
+
+        .appeal-hero-content {
+            max-width: 900px;
+            padding: 3rem;
+        }
+
+        .appeal-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .appeal-hero p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* ==================== FLAG SYMBOLISM SECTION ==================== */
+        .symbolism-section {
+            padding: 5rem 0;
+            background-color: var(--cream);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--tree-brown);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .symbolism-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .symbolism-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+
+        /* ==================== HISTORICAL CONTEXT SECTION ==================== */
+        .history-section {
+            padding: 5rem 0;
+            background-color: var(--light-brown);
+        }
+
+        .history-section .section-title h2 {
+            color: var(--pine-green);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .history-card {
+            background-color: var(--cream);
+            border-radius: 10px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--deep-shadow);
+        }
+
+        .history-icon {
+            font-size: 2.5rem;
+            color: var(--pine-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .history-card h3 {
+            color: var(--pine-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .history-card p {
+            color: var(--medium-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .history-meta {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            font-size: 0.95rem;
+            color: var(--tree-brown);
+        }
+
+        /* ==================== WHITE MOUNTAINS CONNECTION SECTION ==================== */
+        .mountains-section {
+            padding: 5rem 0;
+            background-color: var(--cream);
+        }
+
+        .mountains-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mountains-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mountains-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+
+        .mountains-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--deep-shadow);
+        }
+
+        .mountains-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .mountains-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* ==================== TRANSCENDENTALISM CONNECTION SECTION ==================== */
+        .transcendentalism-connection-section {
+            padding: 5rem 0;
+            background-color: var(--pine-green);
+            color: var(--white);
+        }
+
+        .transcendentalism-connection-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .transcendentalism-connection-section .section-title h2:after {
+            background-color: var(--sky-blue);
+        }
+
+        .connection-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .connection-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .connection-quote {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-style: italic;
+            margin: 3rem auto;
+            max-width: 700px;
+            color: var(--sky-blue);
+            font-family: 'Merriweather', serif;
+            border-left: 3px solid var(--sky-blue);
+            padding-left: 2rem;
+        }
+
+        /* ==================== MODERN RELEVANCE SECTION ==================== */
+        .modern-section {
+            padding: 5rem 0;
+            background-color: var(--tree-brown);
+            color: var(--white);
+        }
+
+        .modern-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .modern-section .section-title h2:after {
+            background-color: var(--white);
+        }
+
+        .modern-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .modern-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .modern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .modern-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .modern-card:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .modern-card h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .modern-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--sky-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--sky-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 992px) {
+            .appeal-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .history-grid, .modern-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .appeal-hero {
+                padding-top: 70px;
+                height: 60vh;
+            }
+            
+            .appeal-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .appeal-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-mobile {
+                width: 85%;
+            }
+            
+            .history-card {
+                padding: 2rem;
+            }
+            
+            .connection-quote {
+                font-size: 1.2rem;
+                padding-left: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .appeal-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .appeal-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.9rem;
+            }
+            
+            .connection-quote {
+                font-size: 1.1rem;
+                padding-left: 1rem;
+            }
+            
+            .modern-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-mountain"></i></div>
+                <div class="logo-text">White Mountains<br><span>Spirit & Heritage</span></div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="transcendentalism.html">Transcendentalism</a></li>
+                    <li class="active"><a href="appeal.html">Appeal to Heaven</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="nav-mobile" id="navMobile">
+        <div class="mobile-header">
+            <div class="mobile-logo">White Mountains Spirit</div>
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="people.html">People</a></li>
+            <li><a href="transcendentalism.html">Transcendentalism</a></li>
+            <li class="active"><a href="appeal.html">Appeal to Heaven</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Appeal to Heaven Hero Section -->
+    <section class="appeal-hero">
+        <div class="appeal-hero-content">
+            <h1>The Pine Tree Flag</h1>
+            <p>How New England's revolutionary symbol connects to the White Mountains spirit and the transcendentalist search for higher truth.</p>
+        </div>
+    </section>
+
+    <!-- Flag Symbolism Section -->
+    <section class="symbolism-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Symbol of Resistance and Faith</h2>
+            </div>
+            <div class="symbolism-content">
+                <p>The Appeal to Heaven flag, with its solitary pine tree on a white field, was more than a military banner during the American Revolution. It represented a philosophical stance: when all earthly appeals are exhausted, there remains a final appeal to divine justice. The pine tree—specifically the Eastern White Pine that dominated New England's forests—symbolized resilience, longevity, and the untamed spirit of the colonies.</p>
+                
+                <p>First flown by George Washington's naval forces in 1775, the flag connected military resistance to deeper principles. Its motto, "An Appeal to Heaven," came from John Locke's Second Treatise on Government, which argued that when a people suffer under "a long train of abuses," they may appeal to heaven for the right to rebel. This wasn't just political theory—it was a declaration that some principles are worth defending beyond all human authority.</p>
+                
+                <p>The White Mountains, with their endless stands of pine, provided the physical embodiment of this symbol. The same trees that appeared on the flag grew on these slopes, bending but not breaking under winter snows, their roots gripping granite—a perfect metaphor for the revolutionary spirit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Context Section -->
+    <section class="history-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Historical Roots and Meaning</h2>
+            </div>
+            <div class="history-grid">
+                <div class="history-card fade-in">
+                    <div class="history-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>The White Pine Acts</h3>
+                    <p>Beginning in 1691, British laws reserved all white pines over 24 inches in diameter for the Royal Navy's masts. These "Broad Arrow" policies marked trees with the king's arrow, making them property of the Crown. Colonists who cut marked trees faced severe penalties, creating early resentment against distant authority controlling local resources.</p>
+                    <div class="history-meta">British Colonial Policy • 1691-1775</div>
+                </div>
+                
+                <div class="history-card fade-in">
+                    <div class="history-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>Washington's Cruisers Flag</h3>
+                    <p>In 1775, General Washington commissioned six schooners to intercept British supply ships. He needed a distinctive flag for this "Washington's Cruisers" fleet. The resulting design—a pine tree with the words "An Appeal to Heaven"—was one of America's first maritime flags and symbolized the navy's revolutionary purpose.</p>
+                    <div class="history-meta">American Revolution • October 1775</div>
+                </div>
+                
+                <div class="history-card fade-in">
+                    <div class="history-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Lockean Philosophy</h3>
+                    <p>The flag's motto directly references John Locke's argument that when governments become destructive, people retain the right to "appeal to heaven." This connected military action to Enlightenment philosophy, suggesting the Revolution wasn't just about taxes but about natural rights that transcended human law.</p>
+                    <div class="history-meta">Political Philosophy • 1689</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- White Mountains Connection Section -->
+    <section class="mountains-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>The White Mountains Pine</h2>
+            </div>
+            <div class="mountains-content">
+                <div class="mountains-text">
+                    <p>The Eastern White Pine (Pinus strobus) that appears on the flag wasn't an abstract symbol—it was the dominant tree of the White Mountains region. These pines could reach 200 feet tall and live 400 years, their straight trunks perfect for ship masts. Their presence on mountain slopes represented both economic value and natural endurance.</p>
+                    
+                    <p>When colonists saw the pine tree flag, they weren't just seeing a political symbol. They were seeing the actual trees that covered the hillsides around their communities—the same trees they relied on for building materials, the same forests where they hunted, the same woodlands that defined the New England landscape.</p>
+                    
+                    <p>The White Mountains provided not just the physical trees but also the environmental conditions that shaped the pine's symbolic meaning. The harsh winters, thin soils, and exposed slopes created trees that were resilient by necessity. A pine growing at high elevation develops deep roots and flexible branches to survive ice and wind—qualities that made it a perfect symbol for a revolutionary movement.</p>
+                </div>
+                <div class="mountains-image fade-in">
+                    <img src="images/white-mountains-pine.jpg" alt="Eastern White Pine trees in the White Mountains" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Pinus_strobus_White_Mountains_1.jpg/800px-Pinus_strobus_White_Mountains_1.jpg'; this.alt='White Pine in White Mountains';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transcendentalism Connection Section -->
+    <section class="transcendentalism-connection-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transcendentalist Interpretation</h2>
+            </div>
+            <div class="connection-content">
+                <p>While the flag originated decades before the transcendentalist movement, its symbolism perfectly aligned with their philosophy. The "appeal to heaven" concept echoed the transcendentalist belief in accessing higher truths beyond human institutions. Just as the flag suggested looking beyond earthly governments, transcendentalists looked beyond established churches and social conventions to find spiritual truth.</p>
+                
+                <p>Henry David Thoreau, who walked White Mountains trails, would have understood the flag's pine tree as more than a political symbol. In "Walden," he wrote about the "tonic of wildness" that forests provide—the same wildness represented by the untamed pine. For transcendentalists, the pine wasn't just a tree; it was a connection to the "Oversoul," Emerson's term for the universal spirit that permeates nature.</p>
+                
+                <div class="connection-quote">
+                    "The flag's pine tree points not just to political liberty but to the freedom Thoreau found in these woods—the liberty to think beyond conventions, to seek truth in nature rather than tradition, to make what Emerson called 'an original relation to the universe.'"
+                </div>
+                
+                <p>Thomas Starr King, whose transcendentalist guidebook celebrated the White Mountains, would have seen the flag's symbolism as perfectly suited to these peaks. His description of mountains as "great stone prophets" parallels the flag's message: both suggest that truth comes not from human authority but from direct engagement with something greater—whether divine justice or the natural world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Relevance Section -->
+    <section class="modern-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enduring Legacy</h2>
+            </div>
+            <div class="modern-content">
+                <p>The Appeal to Heaven flag and its White Mountains pine continue to resonate today, representing principles that transcend their historical moment. In an age of environmental awareness, the pine symbolizes not just political independence but ecological wisdom—the understanding that some natural things should be preserved for their intrinsic value.</p>
+                
+                <div class="modern-grid">
+                    <div class="modern-card fade-in">
+                        <h3>Environmental Symbolism</h3>
+                        <p>Today, the Eastern White Pine represents conservation values. The flag's tree reminds us that natural resources require stewardship, connecting revolutionary principles to modern environmental ethics.</p>
+                    </div>
+                    
+                    <div class="modern-card fade-in">
+                        <h3>Regional Identity</h3>
+                        <p>The flag remains a symbol of New England's distinct character—its blend of rugged individualism, respect for nature, and historical consciousness that continues to shape the region's identity.</p>
+                    </div>
+                    
+                    <div class="modern-card fade-in">
+                        <h3>Philosophical Continuity</h3>
+                        <p>The "appeal to heaven" concept continues in discussions about civil disobedience and moral resistance, connecting the Revolution to later movements for justice and reform.</p>
+                    </div>
+                </div>
+                
+                <p>When you stand in the White Mountains today, surrounded by pine forests that have survived centuries of change, you're experiencing the living embodiment of the flag's symbol. These trees—and the mountains that sustain them—continue to represent resilience, endurance, and the search for principles that transcend the moment. They remind us that some appeals are indeed made to heaven, and some truths are found not in human institutions but in the quiet wisdom of ancient forests.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>White Mountains Spirit</h3>
+                    <div class="footer-about">
+                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="history.html"><i class="fas fa-chevron-right"></i> Historical Archives</a></li>
+                        <li><a href="people.html"><i class="fas fa-chevron-right"></i> Historical Figures</a></li>
+                        <li><a href="transcendentalism.html"><i class="fas fa-chevron-right"></i> Transcendentalist Writings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Share Your Story</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Research Inquiries</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 White Mountains Spirit. All rights reserved. This is a non-commercial educational resource.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation functionality
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileClose = document.getElementById('mobileClose');
+        const navMobile = document.getElementById('navMobile');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMobile.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileClose.addEventListener('click', closeMobileNav);
+        navOverlay.addEventListener('click', closeMobileNav);
+        
+        function closeMobileNav() {
+            navMobile.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-mobile a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // Initialize animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for fade-in animation
+        document.querySelectorAll('.history-card, .mountains-image, .modern-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
