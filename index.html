@@ -64,15 +64,12 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--white);
             border-bottom: 1px solid rgba(10, 92, 54, 0.1);
             transition: all 0.3s ease;
         }
 
         .header-scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
             box-shadow: var(--shadow);
         }
 
@@ -283,7 +280,7 @@
             height: 100vh;
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
-                url('images/mountains.jpg') no-repeat center center fixed;
+                url('images/wmpainting.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -806,7 +803,8 @@
                     <p>Here, you will find not tourist attractions, but the stories, people, and ideals that have defined this region through revolution, artistic awakening, and environmental stewardship.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="White Mountains landscape">
+                    <!-- Fallback to painting if wmpainting.jpg isn't available -->
+                    <img src="images/wmpainting.jpg" alt="White Mountains painting by a local artist" onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='White Mountains landscape';">
                 </div>
             </div>
         </div>
@@ -856,7 +854,7 @@
                 <p>The "Appeal to Heaven" flag, with its distinctive pine tree, speaks to something fundamental in the character of these mountains. First flown during a time of revolution, it represents more than political defiance—it embodies the quiet determination to seek higher principles when earthly avenues fail.</p>
                 <p>In these mountains, that solitary pine finds its natural home. The flag's meaning deepens here, resonating with the same spirit that drew Thoreau to these woods—a belief in nature as both sanctuary and teacher, and in the individual's capacity to find truth through direct experience of the wild.</p>
                 <div class="flag-image">
-                    <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree">
+                    <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/An_Appeal_to_Heaven_Flag.svg/1200px-An_Appeal_to_Heaven_Flag.svg.png'; this.alt='Appeal to Heaven Flag';">
                 </div>
             </div>
         </div>
