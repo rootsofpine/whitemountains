@@ -277,13 +277,14 @@
             visibility: visible;
         }
 
-        /* ==================== HISTORY HERO ==================== */
+        /* ==================== HISTORY HERO WITH PARALLAX ==================== */
         .history-hero {
             height: 70vh;
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/history-banner.jpg') no-repeat center center;
             background-size: cover;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -291,6 +292,16 @@
             color: var(--white);
             padding-top: 80px;
             margin-bottom: 4rem;
+            position: relative;
+        }
+
+        /* Mobile: remove fixed background for better performance */
+        @media (max-width: 768px) {
+            .history-hero {
+                background-attachment: scroll;
+                height: 60vh;
+                padding-top: 70px;
+            }
         }
 
         .history-hero-content {
@@ -813,6 +824,10 @@
                 left: 18.5px;
                 right: auto;
             }
+            
+            .section {
+                padding: 4rem 0;
+            }
         }
 
         @media (max-width: 768px) {
@@ -827,6 +842,7 @@
             .history-hero {
                 padding-top: 70px;
                 height: 60vh;
+                background-attachment: scroll;
             }
             
             .history-hero h1 {
@@ -909,6 +925,16 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
     </style>
 </head>
 <body>
@@ -982,7 +1008,7 @@
                         <h3 class="timeline-title">The Abenaki Homeland</h3>
                         <div class="timeline-text">
                             <p>For countless generations, the Abenaki people walked these mountains knowing them not as wilderness but as kin. They called this place Wōbanaki—Dawnland—where the first light touches the eastern slopes each morning.</p>
-                            <p>Their trails followed the natural lay of the land, paths worn smooth by moccasins moving between fishing spots and hunting grounds. When they gathered sweetgrass or tapped maple trees, they did so with a understanding that these mountains gave as much as they took.</p>
+                            <p>Their trails followed the natural lay of the land, paths worn smooth by moccasins moving between fishing spots and hunting grounds. When they gathered sweetgrass or tapped maple trees, they did so with an understanding that these mountains gave as much as they took.</p>
                             <p>Those early paths became the roads we drive today. The quiet wisdom of living with the land instead of against it still whispers in the places they named, like Pemigewasset and Saco.</p>
                         </div>
                         <div class="timeline-image">
@@ -1154,7 +1180,7 @@
                 <div class="footer-column">
                     <h3>White Mountains Spirit</h3>
                     <div class="footer-about">
-                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                        <p>Created by and for those who call these mountains home, this space celebrates our shared heritage and community spirit. All content honors the ongoing story of the White Mountains and its people.</p>
                     </div>
                 </div>
                 <div class="footer-column">
