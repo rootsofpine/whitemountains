@@ -43,8 +43,6 @@
             background-color: var(--cream);
             overflow-x: hidden;
             font-weight: 400;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: transparent;
         }
 
         h1, h2, h3, h4, h5 {
@@ -58,16 +56,10 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 clamp(15px, 4vw, 20px);
+            padding: 0 20px;
         }
 
-        /* ==================== IMPROVED MOBILE TYPOGRAPHY ==================== */
-        p, li, a {
-            font-size: clamp(1rem, 1.1vw, 1.15rem);
-            letter-spacing: 0.01em;
-        }
-
-        /* ==================== HEADER REDESIGN ==================== */
+        /* ==================== HEADER ==================== */
         header {
             position: fixed;
             top: 0;
@@ -77,8 +69,6 @@
             background-color: var(--white);
             border-bottom: 1px solid rgba(10, 92, 54, 0.1);
             transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
         }
 
         .header-scrolled {
@@ -89,8 +79,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
-            min-height: 70px;
+            padding: 1.2rem 0;
         }
 
         /* Logo */
@@ -99,7 +88,6 @@
             align-items: center;
             text-decoration: none;
             transition: transform 0.3s ease;
-            flex-shrink: 0;
         }
 
         .logo:hover {
@@ -107,14 +95,14 @@
         }
 
         .logo-icon {
-            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-size: 1.8rem;
             color: var(--pine-green);
             margin-right: 0.75rem;
         }
 
         .logo-text {
             font-family: 'Merriweather', serif;
-            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--pine-green);
             line-height: 1.1;
@@ -122,7 +110,7 @@
 
         .logo-text span {
             display: block;
-            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-size: 1rem;
             font-weight: 400;
             color: var(--tree-brown);
             margin-top: 0.1rem;
@@ -142,7 +130,7 @@
         }
 
         .nav-desktop li {
-            margin-left: clamp(1rem, 2vw, 2rem);
+            margin-left: 2rem;
             position: relative;
         }
 
@@ -150,7 +138,7 @@
             text-decoration: none;
             color: var(--dark-gray);
             font-weight: 500;
-            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            font-size: 0.95rem;
             transition: color 0.3s ease;
             padding: 0.5rem 0;
             position: relative;
@@ -191,8 +179,6 @@
             cursor: pointer;
             padding: 0.5rem;
             transition: color 0.3s ease;
-            min-width: 44px;
-            min-height: 44px;
         }
 
         .mobile-toggle:hover {
@@ -204,15 +190,14 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: min(85vw, 300px);
+            width: 300px;
             height: 100vh;
             background-color: var(--white);
             z-index: 1001;
-            padding: 2rem clamp(1rem, 4vw, 2rem);
+            padding: 2rem;
             box-shadow: var(--deep-shadow);
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .nav-mobile.active {
@@ -241,8 +226,6 @@
             font-size: 1.5rem;
             color: var(--pine-green);
             cursor: pointer;
-            min-width: 44px;
-            min-height: 44px;
         }
 
         .nav-mobile ul {
@@ -250,7 +233,7 @@
         }
 
         .nav-mobile li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .nav-mobile a {
@@ -262,9 +245,6 @@
             padding: 0.8rem 1rem;
             border-radius: 5px;
             transition: all 0.3s ease;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
         }
 
         .nav-mobile a:hover {
@@ -297,49 +277,34 @@
             visibility: visible;
         }
 
-        /* ==================== WORKING PARALLAX HERO ==================== */
-        .parallax-wrapper {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            perspective: 1px;
-            transform-style: preserve-3d;
-        }
-
+        /* ==================== HERO SECTION WITH WORKING PARALLAX ==================== */
         .hero {
-            position: relative;
             height: 100vh;
+            background: 
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
+                url('images/wmpainting.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed; /* THIS IS THE KEY FOR PARALLAX */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding: 100px 20px 40px;
-            z-index: 2;
-            transform: translateZ(0);
+            padding-top: 80px;
+            position: relative;
         }
 
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            background: 
-                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
-                url('images/wmpainting.jpg') no-repeat center center;
-            background-size: cover;
-            z-index: 1;
-            transform: translateZ(-1px) scale(2);
-            will-change: transform;
+        /* Fix for mobile performance - remove fixed background on mobile */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
         }
 
         .hero-content {
-            max-width: min(900px, 90vw);
-            padding: clamp(1.5rem, 5vw, 3rem);
+            max-width: 900px;
+            padding: 3rem;
             animation: fadeInUp 1s ease 0.3s both;
-            position: relative;
-            z-index: 3;
         }
 
         @keyframes fadeInUp {
@@ -354,20 +319,19 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             color: var(--white);
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
-            hyphens: auto;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+            font-size: 1.3rem;
             margin-bottom: 2.5rem;
             line-height: 1.7;
             font-weight: 300;
-            max-width: min(700px, 90vw);
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             opacity: 0.9;
@@ -377,20 +341,15 @@
             display: inline-block;
             background-color: var(--tree-brown);
             color: var(--white);
-            padding: clamp(0.9rem, 3vw, 1rem) clamp(2rem, 4vw, 2.5rem);
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 4px;
             font-weight: 600;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             border: 1px solid var(--tree-brown);
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            min-width: 160px;
-            min-height: 50px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .cta-button:hover {
@@ -402,17 +361,16 @@
 
         /* ==================== MAIN CONTENT ==================== */
         .section {
-            padding: clamp(3rem, 8vw, 5rem) 0;
+            padding: 5rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: clamp(2rem, 5vw, 3rem);
-            padding: 0 10px;
+            margin-bottom: 3rem;
         }
 
         .section-title h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             position: relative;
             display: inline-block;
             padding-bottom: 1rem;
@@ -435,37 +393,32 @@
             margin: 3rem 0;
         }
 
-        /* About Section - Mobile Optimized */
+        /* About Section */
         .about-content {
             display: flex;
             align-items: center;
-            gap: clamp(2rem, 4vw, 4rem);
-            flex-wrap: wrap;
+            gap: 4rem;
         }
 
         .about-text {
-            flex: 1 1 300px;
-            min-width: 0;
+            flex: 1.2;
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            font-size: 1.1rem;
             color: var(--medium-gray);
             line-height: 1.8;
-            text-align: justify;
-            hyphens: auto;
         }
 
         .about-image {
-            flex: 1 1 300px;
+            flex: 0.8;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             transition: transform 0.5s ease;
             border: 1px solid rgba(139, 69, 19, 0.1);
             background-color: var(--white);
-            min-width: 0;
         }
 
         .about-image:hover {
@@ -476,8 +429,6 @@
             width: 100%;
             height: auto;
             display: block;
-            aspect-ratio: 4/3;
-            object-fit: cover;
         }
 
         /* Values Section */
@@ -496,14 +447,13 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr));
-            gap: clamp(1.5rem, 3vw, 2.5rem);
-            padding: 0 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .value-card {
             background-color: rgba(255, 255, 255, 0.08);
-            padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 2rem);
+            padding: 2.5rem 2rem;
             border-radius: 8px;
             text-align: center;
             transition: all 0.3s ease;
@@ -518,7 +468,7 @@
         }
 
         .value-icon {
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: 2.5rem;
             color: var(--sky-blue);
             margin-bottom: 1.5rem;
             display: inline-block;
@@ -527,12 +477,12 @@
         .value-card h3 {
             color: var(--white);
             margin-bottom: 1rem;
-            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
         }
 
         .value-card p {
             color: rgba(255, 255, 255, 0.85);
-            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            font-size: 1.05rem;
             line-height: 1.7;
         }
 
@@ -552,21 +502,19 @@
         }
 
         .flag-content {
-            max-width: min(800px, 90vw);
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .flag-content p {
             margin-bottom: 1.5rem;
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
-            text-align: justify;
-            hyphens: auto;
         }
 
         .flag-image {
-            max-width: min(600px, 90vw);
+            max-width: 600px;
             margin: 3rem auto 0;
             border-radius: 8px;
             overflow: hidden;
@@ -579,52 +527,40 @@
             width: 100%;
             height: auto;
             display: block;
-            aspect-ratio: 16/9;
-            object-fit: cover;
         }
 
         /* Quote Section */
         .quote-section {
             background-color: var(--light-brown);
-            padding: clamp(3rem, 6vw, 5rem) 0;
+            padding: 5rem 0;
         }
 
         .quote-container {
-            max-width: min(800px, 90vw);
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
             position: relative;
-            padding: 0 15px;
         }
 
         .quote-icon {
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: 2.5rem;
             color: var(--pine-green);
             opacity: 0.3;
             margin-bottom: 1.5rem;
         }
 
         .quote {
-            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            font-size: 1.7rem;
             font-style: italic;
             line-height: 1.6;
             color: var(--medium-gray);
             margin-bottom: 1.5rem;
             font-weight: 300;
             font-family: 'Merriweather', serif;
-            quotes: "«" "»" "‹" "›";
-        }
-
-        .quote:before {
-            content: open-quote;
-        }
-
-        .quote:after {
-            content: close-quote;
         }
 
         .quote-author {
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-size: 1.1rem;
             color: var(--tree-brown);
             font-weight: 500;
         }
@@ -633,20 +569,20 @@
         footer {
             background-color: var(--dark-gray);
             color: var(--white);
-            padding: clamp(2rem, 5vw, 4rem) 0 clamp(1rem, 3vw, 2rem);
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(250px, 90vw), 1fr));
-            gap: clamp(1.5rem, 3vw, 3rem);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
             margin-bottom: 3rem;
         }
 
         .footer-column h3 {
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-size: 1.3rem;
             position: relative;
             padding-bottom: 0.8rem;
         }
@@ -664,7 +600,7 @@
         .footer-about p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1.5rem;
-            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            font-size: 1.05rem;
             line-height: 1.6;
         }
 
@@ -682,7 +618,6 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            min-height: 30px;
         }
 
         .footer-links a:hover {
@@ -701,13 +636,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
-            padding: 0 15px;
-        }
-
-        /* ==================== TOUCH-FRIENDLY IMPROVEMENTS ==================== */
-        button, .cta-button, .nav-mobile a {
-            touch-action: manipulation;
-            cursor: pointer;
         }
 
         /* ==================== RESPONSIVE DESIGN ==================== */
@@ -718,8 +646,14 @@
             
             .about-image {
                 order: -1;
-                max-width: 500px;
-                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
             }
         }
 
@@ -732,30 +666,25 @@
                 display: none;
             }
             
-            .parallax-wrapper {
-                height: 90vh;
-            }
-            
             .hero {
-                padding-top: 90px;
-                height: 90vh;
+                padding-top: 70px;
+                background-attachment: scroll; /* Fixed on mobile causes issues */
             }
             
-            .hero-background {
-                height: 100%;
+            .hero h1 {
+                font-size: 2.4rem;
             }
             
-            .hero-content {
-                padding: 1.5rem;
+            .hero p {
+                font-size: 1.2rem;
             }
             
-            .section {
-                padding: 2.5rem 0;
+            .section-title h2 {
+                font-size: 2.2rem;
             }
             
-            .about-text p,
-            .flag-content p {
-                text-align: left;
+            .quote {
+                font-size: 1.5rem;
             }
             
             .nav-mobile {
@@ -764,103 +693,37 @@
         }
 
         @media (max-width: 576px) {
-            .container {
-                padding: 0 15px;
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .parallax-wrapper,
-            .hero {
-                height: 85vh;
-            }
-            
-            .hero {
-                padding: 100px 15px 30px;
+            .hero p {
+                font-size: 1.1rem;
             }
             
             .cta-button {
-                width: 100%;
-                max-width: 300px;
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
             }
             
-            .section-title {
-                margin-bottom: 2rem;
+            .section {
+                padding: 3rem 0;
             }
             
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             
             .quote {
                 font-size: 1.3rem;
-                line-height: 1.5;
-            }
-        }
-
-        /* Disable hover effects on touch devices */
-        @media (hover: none) {
-            .about-image:hover,
-            .value-card:hover,
-            .cta-button:hover,
-            .nav-desktop a:hover,
-            .footer-links a:hover {
-                transform: none;
             }
             
-            .cta-button:active {
-                background-color: transparent;
-                color: var(--white);
-                border-color: var(--white);
-                transform: scale(0.98);
+            .logo-text {
+                font-size: 1.4rem;
             }
             
-            .nav-mobile a:active {
-                background-color: rgba(10, 92, 54, 0.1);
-                transform: translateX(5px);
-            }
-            
-            /* Disable parallax on mobile for better performance */
-            .parallax-wrapper {
-                perspective: none;
-                transform-style: flat;
-            }
-            
-            .hero-background {
-                transform: none !important;
-            }
-        }
-
-        /* Landscape mode optimizations */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .parallax-wrapper,
-            .hero {
-                height: auto;
-                min-height: 100vh;
-            }
-            
-            .hero {
-                padding: 80px 20px 30px;
-            }
-            
-            .hero-content {
-                padding: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        /* High-performance scrolling on iOS */
-        @supports (-webkit-overflow-scrolling: touch) {
-            .hero,
-            .nav-mobile {
-                -webkit-overflow-scrolling: touch;
+            .logo-text span {
+                font-size: 0.9rem;
             }
         }
 
@@ -934,17 +797,14 @@
         </ul>
     </nav>
 
-    <!-- Parallax Wrapper with Hero Section -->
-    <div class="parallax-wrapper">
-        <div class="hero-background" id="heroBackground"></div>
-        <section class="hero" id="hero">
-            <div class="hero-content">
-                <h1>The Living Spirit of the White Mountains</h1>
-                <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
-                <a href="#about" class="cta-button">Discover Our Story</a>
-            </div>
-        </section>
-    </div>
+    <!-- Hero Section with Fixed Background (Parallax) -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>The Spirit of the White Mountains</h1>
+            <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
+            <a href="#about" class="cta-button">Discover Our Story</a>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section class="section" id="about">
@@ -1071,7 +931,6 @@
         const mobileClose = document.getElementById('mobileClose');
         const navMobile = document.getElementById('navMobile');
         const navOverlay = document.getElementById('navOverlay');
-        const heroBackground = document.getElementById('heroBackground');
         
         mobileToggle.addEventListener('click', () => {
             navMobile.classList.add('active');
@@ -1104,19 +963,7 @@
             
             // Update active nav based on scroll position
             updateActiveNav();
-            
-            // Working parallax effect
-            if (window.innerWidth > 768 && !isTouchDevice()) {
-                const scrolled = window.pageYOffset;
-                const parallaxSpeed = 0.3;
-                heroBackground.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * parallaxSpeed}px)`;
-            }
         });
-        
-        // Check if device is touch device
-        function isTouchDevice() {
-            return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-        }
         
         // Update active navigation based on scroll position
         function updateActiveNav() {
@@ -1173,33 +1020,8 @@
             });
         });
         
-        // Handle iOS Safari 100vh issue and mobile optimizations
-        function setHeroHeight() {
-            const hero = document.querySelector('.hero');
-            const wrapper = document.querySelector('.parallax-wrapper');
-            if (hero && wrapper) {
-                const vh = window.innerHeight;
-                hero.style.height = `${vh}px`;
-                wrapper.style.height = `${vh}px`;
-            }
-        }
-        
-        // Initialize
-        setHeroHeight();
+        // Initialize active nav on page load
         updateActiveNav();
-        
-        // Update on resize and orientation change
-        window.addEventListener('resize', setHeroHeight);
-        window.addEventListener('orientationchange', function() {
-            setTimeout(setHeroHeight, 100);
-        });
-        
-        // Disable parallax on mobile for better performance
-        if (isTouchDevice()) {
-            heroBackground.style.transform = 'none';
-            document.querySelector('.parallax-wrapper').style.perspective = 'none';
-            document.querySelector('.parallax-wrapper').style.transformStyle = 'flat';
-        }
     </script>
 </body>
 </html>
