@@ -277,30 +277,31 @@
             visibility: visible;
         }
 
-        /* ==================== HISTORY HERO WITH PARALLAX ==================== */
+        /* ==================== HISTORY HERO WITH PARALLAX - FIXED ==================== */
         .history-hero {
-            height: 70vh;
+            height: 100vh; /* CHANGED FROM 70vh to 100vh */
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/history-banner.jpg') no-repeat center center;
             background-size: cover;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Parallax effect */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding-top: 80px;
-            margin-bottom: 4rem;
+            padding-top: 80px; /* Account for fixed header */
             position: relative;
+            min-height: 600px; /* Ensure enough height on very short screens */
         }
 
         /* Mobile: remove fixed background for better performance */
         @media (max-width: 768px) {
             .history-hero {
-                background-attachment: scroll;
-                height: 60vh;
+                background-attachment: scroll; /* Remove parallax on mobile for performance */
+                height: 80vh; /* Adjust for mobile */
                 padding-top: 70px;
+                min-height: 500px;
             }
         }
 
@@ -841,7 +842,6 @@
             
             .history-hero {
                 padding-top: 70px;
-                height: 60vh;
                 background-attachment: scroll;
             }
             
