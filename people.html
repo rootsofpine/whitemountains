@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>People| White Mountains Spirit</title>
+    <title>People | White Mountains Spirit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -277,13 +277,14 @@
             visibility: visible;
         }
 
-        /* ==================== HISTORICAL HERO ==================== */
+        /* ==================== HISTORICAL HERO WITH PARALLAX ==================== */
         .historical-hero {
             height: 70vh;
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/historical-people-banner.jpg') no-repeat center center;
             background-size: cover;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -291,6 +292,15 @@
             color: var(--white);
             padding-top: 80px;
             margin-bottom: 4rem;
+        }
+
+        /* Mobile: remove fixed background for better performance */
+        @media (max-width: 768px) {
+            .historical-hero {
+                background-attachment: scroll;
+                height: 60vh;
+                padding-top: 70px;
+            }
         }
 
         .historical-hero-content {
@@ -696,6 +706,7 @@
             .historical-hero {
                 padding-top: 70px;
                 height: 60vh;
+                background-attachment: scroll;
             }
             
             .historical-hero h1 {
@@ -774,6 +785,16 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
     </style>
 </head>
 <body>
@@ -840,9 +861,9 @@
                 <h2>People Who Made History Here</h2>
             </div>
             <div class="intro-content">
-                <p>The history of the White Mountains isn't just about dates and events—it's about people. Some were born here and spent lifetimes learning the mountains' secrets. Others came as visitors but left changed, carrying the mountains' lessons back into the wider world.</p>
+                <p>White Mountains history is etched in the lives of people who walked these slopes. Some were born here, learning the mountains' cadence over a lifetime. Others arrived as visitors but departed forever changed, carrying mountain wisdom back into the wider world.</p>
                 
-                <p>These individuals—innkeepers, guides, writers, settlers—each contributed to what these mountains have become. Their stories are woven into the place names we use, the trails we walk, and the understanding we have of this remarkable landscape.</p>
+                <p>Innkeepers, guides, writers, settlers—each added threads to the rich tapestry of this place. Their stories echo in the names we give to passes and peaks, the trails we follow, and the quiet understanding that grows when you live among ancient granite.</p>
             </div>
         </div>
     </section>
@@ -865,12 +886,12 @@
                             <div class="figure-dates">1792 - 1846</div>
                         </div>
                         <div class="figure-description">
-                            <p>Son of Abel Crawford, Ethan Allen Crawford built and operated the Crawford House at the foot of Mount Washington. At 6'6" tall, he was a mountain of a man who became legendary for his strength and hospitality. He guided countless early visitors up Mount Washington, including naturalist Thomas Nuttall and ornithologist John James Audubon.</p>
-                            <p>Crawford's inn became the center of early White Mountains tourism. He built the first trail up Mount Washington from the west, known as Crawford Path (originally built for his cattle). His death in 1846 marked the end of an era, but his name lives on in Crawford Notch and the Crawford family legacy.</p>
+                            <p>Abel Crawford's son Ethan stood six-and-a-half feet tall—a mountain of a man who became legend for both his strength and his hospitality. At the Crawford House nestled below Mount Washington, he welcomed travelers with a warmth that matched his formidable stature. Naturalist Thomas Nuttall and ornithologist John James Audubon numbered among those he guided up the mountain's western slopes.</p>
+                            <p>His inn became the beating heart of early White Mountains exploration, a place where weary travelers found rest and where stories were exchanged around evening fires. The Crawford Path, originally forged for his cattle to reach high pastures, became America's oldest continuously maintained hiking trail—a testament to his understanding that the mountains were meant to be shared.</p>
                         </div>
                         <div class="figure-legacy">
-                            <h4>Legacy</h4>
-                            <p>Crawford Path, America's oldest continuously maintained hiking trail, which he originally built for his cattle. Crawford Notch bears his family name. His inn set the standard for mountain hospitality that continues today.</p>
+                            <h4>Enduring Impact</h4>
+                            <p>Crawford Path still guides hikers upward, Crawford Notch bears his family name, and the tradition of mountain hospitality he established continues in inns throughout these hills.</p>
                         </div>
                     </div>
                 </div>
@@ -886,12 +907,12 @@
                             <div class="figure-dates">1795 - 1846</div>
                         </div>
                         <div class="figure-description">
-                            <p>Wife of Ethan Allen Crawford, Lucy was the first historian of the White Mountains. In 1846, she published "History of the White Mountains," the first comprehensive account of the region's settlement and early tourism. Her book remains an invaluable primary source for understanding early 19th-century life in the mountains.</p>
-                            <p>Lucy managed the Crawford House alongside her husband, welcoming visitors that included Daniel Webster and other prominent figures. Her writing provides detailed accounts of daily life, challenges of mountain living, and interactions with early tourists. She documented everything from cooking for large groups to dealing with difficult guests, offering a rare woman's perspective on frontier hospitality.</p>
+                            <p>Ethan's wife Lucy saw what others missed—that daily life held stories worth preserving. In 1846, she gave the mountains their first historian's voice with "History of the White Mountains," a book that captured the texture of settlement years with remarkable clarity. Her pages hold not just grand events but the quiet rhythms of mountain living—the challenge of feeding crowds with limited provisions, the art of welcoming famous guests while managing difficult ones, the woman's perspective on frontier life that men rarely recorded.</p>
+                            <p>While her husband welcomed visitors like Daniel Webster to their inn, Lucy observed and remembered, understanding that what seemed ordinary today would become precious history tomorrow. Her writing bridges centuries, letting us hear the voices of those first mountain families.</p>
                         </div>
                         <div class="figure-legacy">
-                            <h4>Legacy</h4>
-                            <p>Her book remains the definitive primary source on early White Mountains history. She preserved stories and details that would otherwise have been lost, particularly about women's experiences in early mountain communities.</p>
+                            <h4>Enduring Impact</h4>
+                            <p>Her book remains the essential window into early White Mountains life, preserving details about women's experiences and daily rhythms that would otherwise have faded with memory.</p>
                         </div>
                     </div>
                 </div>
@@ -907,12 +928,12 @@
                             <div class="figure-dates">1803 - 1884</div>
                         </div>
                         <div class="figure-description">
-                            <p>A Chicago meatpacker turned inventor, Marsh came to the White Mountains in 1852 and got caught in bad weather on Mount Washington. The experience inspired him to create a safer way to reach the summit. Despite being mocked (legislators called it "Marsh's railway to the moon"), he received a charter in 1858 to build the world's first mountain-climbing cog railway.</p>
-                            <p>The Mount Washington Cog Railway opened in 1869, using Marsh's revolutionary cog system that allowed trains to climb steep grades safely. It became an engineering marvel and transformed tourism in the White Mountains, making the summit accessible to people who could never have made the arduous hike.</p>
+                            <p>A Chicago meatpacker turned inventor, Marsh experienced the mountain's fierce weather during an 1852 hike and emerged with a revolutionary idea. While legislators scoffed at his "railway to the moon," he secured a charter in 1858 and proceeded to build what skeptics deemed impossible. His rack-and-pinion cog system, a masterpiece of mechanical ingenuity, allowed trains to climb grades so steep they defied conventional engineering.</p>
+                            <p>When the Mount Washington Cog Railway opened in 1869, it transformed humanity's relationship with mountains. Suddenly, summit vistas became accessible to those who couldn't hike—elderly visitors, families with children, anyone with the courage to ride what had recently been deemed fantasy. Marsh proved that technology could complement wilderness rather than conquer it.</p>
                         </div>
                         <div class="figure-legacy">
-                            <h4>Legacy</h4>
-                            <p>Invented the rack-and-pinion cog railway system still used today. The Mount Washington Cog Railway has operated continuously since 1869. His innovation made mountain summits accessible to ordinary people for the first time.</p>
+                            <h4>Enduring Impact</h4>
+                            <p>His cog railway still ascends the mountain today, the same system inspiring similar railways worldwide. He demonstrated that accessibility and preservation could coexist, changing how we experience mountains forever.</p>
                         </div>
                     </div>
                 </div>
@@ -982,27 +1003,27 @@
                 <h2>Lasting Impact</h2>
             </div>
             <div class="legacy-content">
-                <p>The individuals who shaped the White Mountains didn't just leave behind stories—they left physical and cultural imprints that continue to define the region today. Their innovations, writings, and hospitality created patterns that would endure for generations.</p>
+                <p>The individuals who shaped these mountains left more than stories—they left patterns that continue to define how we live with and understand this landscape. Their innovations, writings, and ways of being created cultural imprints that endure generations later.</p>
                 
                 <div class="legacy-points">
                     <div class="legacy-point fade-in">
                         <h3>Trailblazing</h3>
-                        <p>Crawford Path, built by Ethan Allen Crawford in 1819, remains the oldest continuously maintained hiking trail in America. It established a pattern of trail building that would eventually create the extensive network we hike today.</p>
+                        <p>Crawford Path, originally built for cattle in 1819, became the model for trail networks that would eventually crisscross these mountains. It taught us that paths could guide without dominating, could make accessible without diminishing wildness.</p>
                     </div>
                     
                     <div class="legacy-point fade-in">
                         <h3>Mountain Hospitality</h3>
-                        <p>The Crawford family established traditions of mountain hospitality that would be followed by generations of innkeepers. Their approach—welcoming weary travelers, sharing local knowledge, creating community around shared experience—set the standard.</p>
+                        <p>The Crawford family established traditions of welcoming travelers that countless innkeepers would follow. Their understanding—that rest and community matter as much as the view—still defines mountain hospitality today.</p>
                     </div>
                     
                     <div class="legacy-point fade-in">
                         <h3>Engineering Innovation</h3>
-                        <p>Sylvester Marsh's cog railway proved that mountains could be made accessible without losing their essential character. His invention inspired similar railways worldwide and demonstrated that technology could coexist with wilderness.</p>
+                        <p>Sylvester Marsh proved that technology could serve wonder rather than supplant it. His railway demonstrated that accessibility need not come at wilderness's expense, creating a model for conservation-minded development.</p>
                     </div>
                     
                     <div class="legacy-point fade-in">
                         <h3>Historical Preservation</h3>
-                        <p>Lucy Crawford's decision to write down the stories of her time created the foundation for all subsequent White Mountains history. She understood that memories fade but written words endure, preserving details that would otherwise be lost.</p>
+                        <p>Lucy Crawford recognized that ordinary life becomes extraordinary history with time. Her decision to record daily rhythms preserved textures of mountain living that official records would have missed.</p>
                     </div>
                 </div>
             </div>
@@ -1016,7 +1037,7 @@
                 <div class="footer-column">
                     <h3>White Mountains Spirit</h3>
                     <div class="footer-about">
-                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                        <p>Created by and for those who call these mountains home, this space celebrates our shared heritage and community spirit. All content honors the ongoing story of the White Mountains and its people.</p>
                     </div>
                 </div>
                 <div class="footer-column">
