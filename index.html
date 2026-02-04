@@ -297,28 +297,66 @@
             visibility: visible;
         }
 
-        /* ==================== HERO SECTION - MOBILE OPTIMIZED ==================== */
+        /* ==================== HERO SECTION WITH PARALLAX ==================== */
         .hero {
+            position: relative;
             min-height: 100vh;
             height: auto;
-            background: 
-                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
-                url('images/wmpainting.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: scroll;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             padding: 100px 20px 40px;
-            position: relative;
+            overflow: hidden;
+        }
+
+        /* Parallax background with fallback for mobile */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: 
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
+                url('images/wmpainting.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        /* Enable parallax on desktop */
+        @media (min-width: 769px) and (hover: hover) {
+            .hero::before {
+                background-attachment: fixed;
+            }
+        }
+
+        /* Performance optimization for mobile */
+        @media (max-width: 768px), (hover: none) {
+            .hero::before {
+                background-attachment: scroll;
+                height: 100%;
+                top: 0;
+                transform: none !important;
+                will-change: auto;
+            }
+            
+            .hero {
+                -webkit-overflow-scrolling: touch;
+                overflow: hidden;
+            }
         }
 
         .hero-content {
             max-width: min(900px, 90vw);
             padding: clamp(1.5rem, 5vw, 3rem);
             animation: fadeInUp 1s ease 0.3s both;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes fadeInUp {
@@ -591,7 +629,7 @@
             margin-bottom: 1.5rem;
             font-weight: 300;
             font-family: 'Merriweather', serif;
-            quotes: "“" "”" "‘" "’";
+            quotes: "«" "»" "‹" "›";
         }
 
         .quote:before {
@@ -686,6 +724,7 @@
         /* ==================== TOUCH-FRIENDLY IMPROVEMENTS ==================== */
         button, .cta-button, .nav-mobile a {
             touch-action: manipulation;
+            cursor: pointer;
         }
 
         /* ==================== RESPONSIVE DESIGN ==================== */
@@ -698,10 +737,6 @@
                 order: -1;
                 max-width: 500px;
                 margin: 0 auto;
-            }
-            
-            .hero {
-                background-attachment: scroll;
             }
         }
 
@@ -744,6 +779,7 @@
             
             .hero {
                 padding: 100px 15px 30px;
+                min-height: 85vh;
             }
             
             .cta-button {
@@ -765,10 +801,13 @@
             }
         }
 
+        /* Disable hover effects on touch devices */
         @media (hover: none) {
             .about-image:hover,
             .value-card:hover,
-            .cta-button:hover {
+            .cta-button:hover,
+            .nav-desktop a:hover,
+            .footer-links a:hover {
                 transform: none;
             }
             
@@ -776,6 +815,12 @@
                 background-color: transparent;
                 color: var(--white);
                 border-color: var(--white);
+                transform: scale(0.98);
+            }
+            
+            .nav-mobile a:active {
+                background-color: rgba(10, 92, 54, 0.1);
+                transform: translateX(5px);
             }
         }
 
@@ -784,6 +829,7 @@
             .hero {
                 min-height: auto;
                 padding: 80px 20px 30px;
+                height: auto;
             }
             
             .hero-content {
@@ -798,6 +844,14 @@
             .hero p {
                 font-size: 1rem;
                 margin-bottom: 1.5rem;
+            }
+        }
+
+        /* High-performance scrolling on iOS */
+        @supports (-webkit-overflow-scrolling: touch) {
+            .hero,
+            .nav-mobile {
+                -webkit-overflow-scrolling: touch;
             }
         }
 
@@ -871,10 +925,10 @@
         </ul>
     </nav>
 
-    <!-- Hero Section with Fixed Background -->
+    <!-- Hero Section with Parallax -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>The Spirit of the White Mountains</h1>
+            <h1>The Living Spirit of the White Mountains</h1>
             <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
             <a href="#about" class="cta-button">Discover Our Story</a>
         </div>
@@ -1037,6 +1091,17 @@
             
             // Update active nav based on scroll position
             updateActiveNav();
+            
+            // Parallax effect for hero background on desktop
+            if (window.innerWidth > 768) {
+                const hero = document.querySelector('.hero');
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * 0.5;
+                const heroBg = document.querySelector('.hero::before');
+                if (heroBg) {
+                    hero.style.transform = `translateY(${rate}px)`;
+                }
+            }
         });
         
         // Update active navigation based on scroll position
@@ -1094,7 +1159,7 @@
             });
         });
         
-        // Touch device detection for hover effects
+        // Touch device detection and performance optimizations
         function hasTouch() {
             return 'ontouchstart' in document.documentElement || 
                    navigator.maxTouchPoints > 0 || 
@@ -1103,10 +1168,40 @@
         
         if (hasTouch()) {
             document.body.classList.add('touch-device');
+            // Disable parallax on mobile for performance
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.willChange = 'auto';
+            }
+        } else {
+            // Enable parallax animations on desktop
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.willChange = 'transform';
+            }
         }
         
         // Initialize active nav on page load
         updateActiveNav();
+        
+        // Handle iOS Safari 100vh issue
+        function setHeroHeight() {
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.height = `${window.innerHeight}px`;
+            }
+        }
+        
+        // Set initial height
+        setHeroHeight();
+        
+        // Update on resize
+        window.addEventListener('resize', setHeroHeight);
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(setHeroHeight, 100);
+        });
     </script>
 </body>
 </html>
