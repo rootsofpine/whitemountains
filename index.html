@@ -297,23 +297,29 @@
             visibility: visible;
         }
 
-        /* ==================== HERO SECTION WITH PARALLAX ==================== */
+        /* ==================== WORKING PARALLAX HERO ==================== */
+        .parallax-wrapper {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+
         .hero {
             position: relative;
-            min-height: 100vh;
-            height: auto;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             padding: 100px 20px 40px;
-            overflow: hidden;
+            z-index: 2;
+            transform: translateZ(0);
         }
 
-        /* Parallax background with fallback for mobile */
-        .hero::before {
-            content: '';
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -323,32 +329,9 @@
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/wmpainting.jpg') no-repeat center center;
             background-size: cover;
-            z-index: -1;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-        }
-
-        /* Enable parallax on desktop */
-        @media (min-width: 769px) and (hover: hover) {
-            .hero::before {
-                background-attachment: fixed;
-            }
-        }
-
-        /* Performance optimization for mobile */
-        @media (max-width: 768px), (hover: none) {
-            .hero::before {
-                background-attachment: scroll;
-                height: 100%;
-                top: 0;
-                transform: none !important;
-                will-change: auto;
-            }
-            
-            .hero {
-                -webkit-overflow-scrolling: touch;
-                overflow: hidden;
-            }
+            z-index: 1;
+            transform: translateZ(-1px) scale(2);
+            will-change: transform;
         }
 
         .hero-content {
@@ -356,7 +339,7 @@
             padding: clamp(1.5rem, 5vw, 3rem);
             animation: fadeInUp 1s ease 0.3s both;
             position: relative;
-            z-index: 1;
+            z-index: 3;
         }
 
         @keyframes fadeInUp {
@@ -749,9 +732,17 @@
                 display: none;
             }
             
+            .parallax-wrapper {
+                height: 90vh;
+            }
+            
             .hero {
                 padding-top: 90px;
-                min-height: 90vh;
+                height: 90vh;
+            }
+            
+            .hero-background {
+                height: 100%;
             }
             
             .hero-content {
@@ -777,9 +768,13 @@
                 padding: 0 15px;
             }
             
+            .parallax-wrapper,
+            .hero {
+                height: 85vh;
+            }
+            
             .hero {
                 padding: 100px 15px 30px;
-                min-height: 85vh;
             }
             
             .cta-button {
@@ -822,14 +817,28 @@
                 background-color: rgba(10, 92, 54, 0.1);
                 transform: translateX(5px);
             }
+            
+            /* Disable parallax on mobile for better performance */
+            .parallax-wrapper {
+                perspective: none;
+                transform-style: flat;
+            }
+            
+            .hero-background {
+                transform: none !important;
+            }
         }
 
         /* Landscape mode optimizations */
         @media (max-height: 600px) and (orientation: landscape) {
+            .parallax-wrapper,
             .hero {
-                min-height: auto;
-                padding: 80px 20px 30px;
                 height: auto;
+                min-height: 100vh;
+            }
+            
+            .hero {
+                padding: 80px 20px 30px;
             }
             
             .hero-content {
@@ -925,14 +934,17 @@
         </ul>
     </nav>
 
-    <!-- Hero Section with Parallax -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>The Living Spirit of the White Mountains</h1>
-            <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
-            <a href="#about" class="cta-button">Discover Our Story</a>
-        </div>
-    </section>
+    <!-- Parallax Wrapper with Hero Section -->
+    <div class="parallax-wrapper">
+        <div class="hero-background" id="heroBackground"></div>
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1>The Living Spirit of the White Mountains</h1>
+                <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
+                <a href="#about" class="cta-button">Discover Our Story</a>
+            </div>
+        </section>
+    </div>
 
     <!-- About Section -->
     <section class="section" id="about">
@@ -1059,6 +1071,7 @@
         const mobileClose = document.getElementById('mobileClose');
         const navMobile = document.getElementById('navMobile');
         const navOverlay = document.getElementById('navOverlay');
+        const heroBackground = document.getElementById('heroBackground');
         
         mobileToggle.addEventListener('click', () => {
             navMobile.classList.add('active');
@@ -1092,17 +1105,18 @@
             // Update active nav based on scroll position
             updateActiveNav();
             
-            // Parallax effect for hero background on desktop
-            if (window.innerWidth > 768) {
-                const hero = document.querySelector('.hero');
+            // Working parallax effect
+            if (window.innerWidth > 768 && !isTouchDevice()) {
                 const scrolled = window.pageYOffset;
-                const rate = scrolled * 0.5;
-                const heroBg = document.querySelector('.hero::before');
-                if (heroBg) {
-                    hero.style.transform = `translateY(${rate}px)`;
-                }
+                const parallaxSpeed = 0.3;
+                heroBackground.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * parallaxSpeed}px)`;
             }
         });
+        
+        // Check if device is touch device
+        function isTouchDevice() {
+            return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+        }
         
         // Update active navigation based on scroll position
         function updateActiveNav() {
@@ -1159,49 +1173,33 @@
             });
         });
         
-        // Touch device detection and performance optimizations
-        function hasTouch() {
-            return 'ontouchstart' in document.documentElement || 
-                   navigator.maxTouchPoints > 0 || 
-                   navigator.msMaxTouchPoints > 0;
-        }
-        
-        if (hasTouch()) {
-            document.body.classList.add('touch-device');
-            // Disable parallax on mobile for performance
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.willChange = 'auto';
-            }
-        } else {
-            // Enable parallax animations on desktop
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.willChange = 'transform';
-            }
-        }
-        
-        // Initialize active nav on page load
-        updateActiveNav();
-        
-        // Handle iOS Safari 100vh issue
+        // Handle iOS Safari 100vh issue and mobile optimizations
         function setHeroHeight() {
             const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.height = `${window.innerHeight}px`;
+            const wrapper = document.querySelector('.parallax-wrapper');
+            if (hero && wrapper) {
+                const vh = window.innerHeight;
+                hero.style.height = `${vh}px`;
+                wrapper.style.height = `${vh}px`;
             }
         }
         
-        // Set initial height
+        // Initialize
         setHeroHeight();
+        updateActiveNav();
         
-        // Update on resize
+        // Update on resize and orientation change
         window.addEventListener('resize', setHeroHeight);
-        
-        // Handle orientation change
         window.addEventListener('orientationchange', function() {
             setTimeout(setHeroHeight, 100);
         });
+        
+        // Disable parallax on mobile for better performance
+        if (isTouchDevice()) {
+            heroBackground.style.transform = 'none';
+            document.querySelector('.parallax-wrapper').style.perspective = 'none';
+            document.querySelector('.parallax-wrapper').style.transformStyle = 'flat';
+        }
     </script>
 </body>
 </html>
