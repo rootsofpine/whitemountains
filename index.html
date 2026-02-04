@@ -43,6 +43,8 @@
             background-color: var(--cream);
             overflow-x: hidden;
             font-weight: 400;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         h1, h2, h3, h4, h5 {
@@ -56,7 +58,13 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 clamp(15px, 4vw, 20px);
+        }
+
+        /* ==================== IMPROVED MOBILE TYPOGRAPHY ==================== */
+        p, li, a {
+            font-size: clamp(1rem, 1.1vw, 1.15rem);
+            letter-spacing: 0.01em;
         }
 
         /* ==================== HEADER REDESIGN ==================== */
@@ -69,6 +77,8 @@
             background-color: var(--white);
             border-bottom: 1px solid rgba(10, 92, 54, 0.1);
             transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
 
         .header-scrolled {
@@ -79,7 +89,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
+            min-height: 70px;
         }
 
         /* Logo */
@@ -88,6 +99,7 @@
             align-items: center;
             text-decoration: none;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
         .logo:hover {
@@ -95,14 +107,14 @@
         }
 
         .logo-icon {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
             color: var(--pine-green);
             margin-right: 0.75rem;
         }
 
         .logo-text {
             font-family: 'Merriweather', serif;
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
             font-weight: 700;
             color: var(--pine-green);
             line-height: 1.1;
@@ -110,7 +122,7 @@
 
         .logo-text span {
             display: block;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 1rem);
             font-weight: 400;
             color: var(--tree-brown);
             margin-top: 0.1rem;
@@ -130,7 +142,7 @@
         }
 
         .nav-desktop li {
-            margin-left: 2rem;
+            margin-left: clamp(1rem, 2vw, 2rem);
             position: relative;
         }
 
@@ -138,7 +150,7 @@
             text-decoration: none;
             color: var(--dark-gray);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
             transition: color 0.3s ease;
             padding: 0.5rem 0;
             position: relative;
@@ -179,6 +191,8 @@
             cursor: pointer;
             padding: 0.5rem;
             transition: color 0.3s ease;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .mobile-toggle:hover {
@@ -190,14 +204,15 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 300px;
+            width: min(85vw, 300px);
             height: 100vh;
             background-color: var(--white);
             z-index: 1001;
-            padding: 2rem;
+            padding: 2rem clamp(1rem, 4vw, 2rem);
             box-shadow: var(--deep-shadow);
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .nav-mobile.active {
@@ -226,6 +241,8 @@
             font-size: 1.5rem;
             color: var(--pine-green);
             cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .nav-mobile ul {
@@ -233,7 +250,7 @@
         }
 
         .nav-mobile li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .nav-mobile a {
@@ -245,6 +262,9 @@
             padding: 0.8rem 1rem;
             border-radius: 5px;
             transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
         .nav-mobile a:hover {
@@ -277,25 +297,27 @@
             visibility: visible;
         }
 
-        /* ==================== HERO SECTION ==================== */
+        /* ==================== HERO SECTION - MOBILE OPTIMIZED ==================== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
-                url('images/wmpainting.jpg') no-repeat center center fixed;
+                url('images/wmpainting.jpg') no-repeat center center;
             background-size: cover;
+            background-attachment: scroll;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding-top: 80px;
+            padding: 100px 20px 40px;
             position: relative;
         }
 
         .hero-content {
-            max-width: 900px;
-            padding: 3rem;
+            max-width: min(900px, 90vw);
+            padding: clamp(1.5rem, 5vw, 3rem);
             animation: fadeInUp 1s ease 0.3s both;
         }
 
@@ -311,19 +333,20 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             margin-bottom: 1.5rem;
             color: var(--white);
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
+            hyphens: auto;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
             margin-bottom: 2.5rem;
             line-height: 1.7;
             font-weight: 300;
-            max-width: 700px;
+            max-width: min(700px, 90vw);
             margin-left: auto;
             margin-right: auto;
             opacity: 0.9;
@@ -333,15 +356,20 @@
             display: inline-block;
             background-color: var(--tree-brown);
             color: var(--white);
-            padding: 1rem 2.5rem;
+            padding: clamp(0.9rem, 3vw, 1rem) clamp(2rem, 4vw, 2.5rem);
             text-decoration: none;
             border-radius: 4px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             transition: all 0.3s ease;
             border: 1px solid var(--tree-brown);
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            min-width: 160px;
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cta-button:hover {
@@ -353,16 +381,17 @@
 
         /* ==================== MAIN CONTENT ==================== */
         .section {
-            padding: 5rem 0;
+            padding: clamp(3rem, 8vw, 5rem) 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            padding: 0 10px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             position: relative;
             display: inline-block;
             padding-bottom: 1rem;
@@ -385,32 +414,37 @@
             margin: 3rem 0;
         }
 
-        /* About Section */
+        /* About Section - Mobile Optimized */
         .about-content {
             display: flex;
             align-items: center;
-            gap: 4rem;
+            gap: clamp(2rem, 4vw, 4rem);
+            flex-wrap: wrap;
         }
 
         .about-text {
-            flex: 1.2;
+            flex: 1 1 300px;
+            min-width: 0;
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
             color: var(--medium-gray);
             line-height: 1.8;
+            text-align: justify;
+            hyphens: auto;
         }
 
         .about-image {
-            flex: 0.8;
+            flex: 1 1 300px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             transition: transform 0.5s ease;
             border: 1px solid rgba(139, 69, 19, 0.1);
             background-color: var(--white);
+            min-width: 0;
         }
 
         .about-image:hover {
@@ -421,6 +455,8 @@
             width: 100%;
             height: auto;
             display: block;
+            aspect-ratio: 4/3;
+            object-fit: cover;
         }
 
         /* Values Section */
@@ -439,13 +475,14 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr));
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            padding: 0 10px;
         }
 
         .value-card {
             background-color: rgba(255, 255, 255, 0.08);
-            padding: 2.5rem 2rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 2rem);
             border-radius: 8px;
             text-align: center;
             transition: all 0.3s ease;
@@ -460,7 +497,7 @@
         }
 
         .value-icon {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             color: var(--sky-blue);
             margin-bottom: 1.5rem;
             display: inline-block;
@@ -469,12 +506,12 @@
         .value-card h3 {
             color: var(--white);
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
         }
 
         .value-card p {
             color: rgba(255, 255, 255, 0.85);
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
             line-height: 1.7;
         }
 
@@ -494,19 +531,21 @@
         }
 
         .flag-content {
-            max-width: 800px;
+            max-width: min(800px, 90vw);
             margin: 0 auto;
         }
 
         .flag-content p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
+            text-align: justify;
+            hyphens: auto;
         }
 
         .flag-image {
-            max-width: 600px;
+            max-width: min(600px, 90vw);
             margin: 3rem auto 0;
             border-radius: 8px;
             overflow: hidden;
@@ -519,40 +558,52 @@
             width: 100%;
             height: auto;
             display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
         }
 
         /* Quote Section */
         .quote-section {
             background-color: var(--light-brown);
-            padding: 5rem 0;
+            padding: clamp(3rem, 6vw, 5rem) 0;
         }
 
         .quote-container {
-            max-width: 800px;
+            max-width: min(800px, 90vw);
             margin: 0 auto;
             text-align: center;
             position: relative;
+            padding: 0 15px;
         }
 
         .quote-icon {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             color: var(--pine-green);
             opacity: 0.3;
             margin-bottom: 1.5rem;
         }
 
         .quote {
-            font-size: 1.7rem;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
             font-style: italic;
             line-height: 1.6;
             color: var(--medium-gray);
             margin-bottom: 1.5rem;
             font-weight: 300;
             font-family: 'Merriweather', serif;
+            quotes: "“" "”" "‘" "’";
+        }
+
+        .quote:before {
+            content: open-quote;
+        }
+
+        .quote:after {
+            content: close-quote;
         }
 
         .quote-author {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             color: var(--tree-brown);
             font-weight: 500;
         }
@@ -561,20 +612,20 @@
         footer {
             background-color: var(--dark-gray);
             color: var(--white);
-            padding: 4rem 0 2rem;
+            padding: clamp(2rem, 5vw, 4rem) 0 clamp(1rem, 3vw, 2rem);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 90vw), 1fr));
+            gap: clamp(1.5rem, 3vw, 3rem);
             margin-bottom: 3rem;
         }
 
         .footer-column h3 {
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             position: relative;
             padding-bottom: 0.8rem;
         }
@@ -592,7 +643,7 @@
         .footer-about p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
             line-height: 1.6;
         }
 
@@ -610,6 +661,7 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            min-height: 30px;
         }
 
         .footer-links a:hover {
@@ -628,6 +680,12 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
+            padding: 0 15px;
+        }
+
+        /* ==================== TOUCH-FRIENDLY IMPROVEMENTS ==================== */
+        button, .cta-button, .nav-mobile a {
+            touch-action: manipulation;
         }
 
         /* ==================== RESPONSIVE DESIGN ==================== */
@@ -638,14 +696,12 @@
             
             .about-image {
                 order: -1;
+                max-width: 500px;
+                margin: 0 auto;
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
+            .hero {
+                background-attachment: scroll;
             }
         }
 
@@ -659,23 +715,21 @@
             }
             
             .hero {
-                padding-top: 70px;
+                padding-top: 90px;
+                min-height: 90vh;
             }
             
-            .hero h1 {
-                font-size: 2.4rem;
+            .hero-content {
+                padding: 1.5rem;
             }
             
-            .hero p {
-                font-size: 1.2rem;
+            .section {
+                padding: 2.5rem 0;
             }
             
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .quote {
-                font-size: 1.5rem;
+            .about-text p,
+            .flag-content p {
+                text-align: left;
             }
             
             .nav-mobile {
@@ -684,37 +738,66 @@
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
+            .container {
+                padding: 0 15px;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero {
+                padding: 100px 15px 30px;
             }
             
             .cta-button {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
             }
             
-            .section {
-                padding: 3rem 0;
+            .section-title {
+                margin-bottom: 2rem;
             }
             
             .section-title h2 {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
             
             .quote {
                 font-size: 1.3rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (hover: none) {
+            .about-image:hover,
+            .value-card:hover,
+            .cta-button:hover {
+                transform: none;
             }
             
-            .logo-text {
-                font-size: 1.4rem;
+            .cta-button:active {
+                background-color: transparent;
+                color: var(--white);
+                border-color: var(--white);
+            }
+        }
+
+        /* Landscape mode optimizations */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 80px 20px 30px;
             }
             
-            .logo-text span {
-                font-size: 0.9rem;
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
         }
 
@@ -792,7 +875,7 @@
     <section class="hero" id="hero">
         <div class="hero-content">
             <h1>The Spirit of the White Mountains</h1>
-            <p>Beyond the tourist maps and trail guides lies a deeper story—one of people shaped by granite peaks, of history written in river valleys, and of a spirit that endures through seasons of change.</p>
+            <p>Beneath the surface of guidebooks and trail maps flows a deeper current—a story of granite shaping character, of rivers carving history, and of a resilient spirit that weathers every season. This is where landscape becomes legacy.</p>
             <a href="#about" class="cta-button">Discover Our Story</a>
         </div>
     </section>
@@ -801,13 +884,13 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>Understanding the White Mountains</h2>
+                <h2>The Heart of These Mountains</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>The White Mountains are more than geography; they're a living chronicle. For centuries, these ancient peaks have witnessed the passage of time—from the Abenaki who first called them home to settlers who carved lives from the granite soil. The mountains don't just surround communities; they form them.</p>
-                    <p>There's something in these hills that speaks to the soul. Maybe it's the way morning mist hangs in the valleys, or how winter snow silences the world. It's a place where you can feel history in the stones and see tomorrow in the sunrise over the Presidential Range.</p>
-                    <p>This isn't a tourism brochure. It's a gathering place for stories—the quiet triumphs of daily life, the generations who've worked this land, and the spirit that persists when the last leaf falls and the first snow begins.</p>
+                    <p>The White Mountains hold more than geography within their ancient ridges. They cradle living history. For generations, these peaks have watched over passing time—from the Abenaki who first named these slopes to the settlers who carved homesteads from granite soil. The mountains don't merely border our communities; they shape our character.</p>
+                    <p>There's a quiet voice in these hills that speaks directly to the soul. You might hear it in the morning mist settling between valleys, or in the profound silence that follows winter snow. Here, you can feel history in the worn stones and glimpse tomorrow in the sunrise painting the Presidential Range.</p>
+                    <p>This space gathers stories rather than sells destinations—the quiet triumphs of daily life, generations working the same land, and the enduring spirit that persists from autumn's last leaf to winter's first snowflake.</p>
                 </div>
                 <div class="about-image">
                     <img src="images/mountains.jpg" alt="A painting of the White Mountains">
@@ -822,29 +905,29 @@
     <section class="section values-section" id="values">
         <div class="container">
             <div class="section-title">
-                <h2>Pillars of the White Mountains Spirit</h2>
+                <h2>Pillars of Our Mountain Spirit</h2>
             </div>
             <div class="values-grid">
                 <div class="value-card fade-in">
                     <div class="value-icon">
                         <i class="fas fa-history"></i>
                     </div>
-                    <h3>Deep History</h3>
-                    <p>Long before the first settlers arrived, the Abenaki knew these mountains as sacred ground. Their stories echo in the place names we still use today. Later came farmers, loggers, and families who found ways to thrive where the soil was thin and winters long. Their resilience is written into every stone wall and cellar hole.</p>
+                    <h3>Layered History</h3>
+                    <p>The Abenaki first knew these mountains as sacred ground, their stories whispering through the place names we still speak. Later came farmers, loggers, and families who learned to thrive where soil grows thin and winters stretch long. Their resilience remains etched into every stone wall and forgotten cellar hole.</p>
                 </div>
                 <div class="value-card fade-in">
                     <div class="value-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Resilient People</h3>
-                    <p>You can see it in the hands of a farmer checking the morning frost, or in the way neighbors still gather when a barn needs raising. Through floods, fires, and economic storms, the people here have learned to bend without breaking. There's a quiet strength that comes from living where nature still sets the terms.</p>
+                    <h3>Resilient Communities</h3>
+                    <p>You can see it in a farmer's hands checking the morning frost, or in neighbors gathering when a barn needs raising. Through floods, fires, and economic storms, people here have learned to bend without breaking. A quiet strength grows from living where nature still sets the terms.</p>
                 </div>
                 <div class="value-card fade-in">
                     <div class="value-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
-                    <h3>Transcendental Connection</h3>
-                    <p>When Thoreau wandered these woods, he wasn't just taking a walk—he was listening. There's a wisdom in these mountains that doesn't come from books. It's in the way a pine grows sideways on a windy ridge, or how the same river can rage in spring and whisper in fall. Nature here isn't scenery; it's conversation.</p>
+                    <h3>Natural Wisdom</h3>
+                    <p>When Thoreau wandered these woods, he listened more than he walked. These mountains offer a wisdom that libraries cannot contain. It's in the pine growing sideways on a windy ridge, in the river that rages each spring yet whispers by fall. Here, nature isn't mere scenery—it's ongoing conversation.</p>
                 </div>
             </div>
         </div>
@@ -857,9 +940,9 @@
                 <h2>The Appeal to Heaven Legacy</h2>
             </div>
             <div class="flag-content">
-                <p>That pine tree on the Appeal to Heaven flag—it looks like it could be growing right here on any north-facing slope. When colonists first raised this banner, they were claiming something wilder than political independence. They were asserting a right to seek truth beyond what kings or parliaments could grant.</p>
-                <p>That same spirit lives in these hills. It's in the way a farmer plants crops knowing frost could come any September night. It's in the determination to keep a small town alive when the mill closes. There's a quiet faith here—not in promises from faraway capitals, but in the stubborn green of new growth after a forest fire.</p>
-                <p>The flag's pine wasn't just a symbol of New England woods. It was a declaration that some things are worth defending to the last, that there are principles higher than convenience, and that sometimes you have to look beyond human courts to find justice.</p>
+                <p>The pine tree on the Appeal to Heaven flag mirrors those standing on our north-facing slopes. When colonists first raised this banner, they claimed something wilder than political independence—they asserted a right to seek truth beyond any king's grant or parliament's decree.</p>
+                <p>That same spirit breathes in these hills today. You'll find it in farmers planting crops despite September's unpredictable frosts, and in communities determined to thrive long after the mill closes. A quiet faith lives here—not in distant political promises, but in the stubborn green of new growth after a forest fire.</p>
+                <p>The flag's pine represented more than New England timber. It declared that certain principles merit fierce defense, that some values outweigh convenience, and that justice sometimes requires looking beyond human courts.</p>
                 <div class="flag-image">
                     <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/An_Appeal_to_Heaven_Flag.svg/1200px-An_Appeal_to_Heaven_Flag.svg.png'; this.alt='Appeal to Heaven Flag';">
                 </div>
@@ -875,7 +958,7 @@
                     <i class="fas fa-quote-left"></i>
                 </div>
                 <blockquote class="quote">
-                    "We must look for a long time before we can see. The habit of a life time cannot be thrown off in an instant. How long did I roam those woods before I learned to see what was around me?"
+                    We must look for a long time before we can see. The habit of a lifetime cannot be thrown off in an instant. How long did I roam those woods before I learned to see what was around me?
                 </blockquote>
                 <p class="quote-author">— Henry David Thoreau, Journal (1857)</p>
             </div>
@@ -889,7 +972,7 @@
                 <div class="footer-column">
                     <h3>White Mountains Spirit</h3>
                     <div class="footer-about">
-                        <p>This site is created by and for the residents of the White Mountains, New Hampshire. It is a celebration of our shared history and community spirit. All content is dedicated to preserving and honoring the White Mountain story.</p>
+                        <p>Created by and for those who call these mountains home, this space celebrates our shared heritage and community spirit. All content honors the ongoing story of the White Mountains and its people.</p>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1010,6 +1093,17 @@
                 }
             });
         });
+        
+        // Touch device detection for hover effects
+        function hasTouch() {
+            return 'ontouchstart' in document.documentElement || 
+                   navigator.maxTouchPoints > 0 || 
+                   navigator.msMaxTouchPoints > 0;
+        }
+        
+        if (hasTouch()) {
+            document.body.classList.add('touch-device');
+        }
         
         // Initialize active nav on page load
         updateActiveNav();
