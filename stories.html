@@ -451,7 +451,7 @@
             margin-right: 0.5rem;
         }
 
-        /* COLLAPSIBLE STORY CONTENT */
+        /* COLLAPSIBLE STORY CONTENT - FIXED */
         .story-full-content {
             font-size: 1.05rem;
             line-height: 1.7;
@@ -459,7 +459,6 @@
             margin-bottom: 1.5rem;
             flex-grow: 1;
             position: relative;
-            overflow: hidden;
         }
 
         .story-excerpt {
@@ -467,6 +466,7 @@
             overflow: hidden;
             transition: max-height 0.5s ease;
             position: relative;
+            margin-bottom: 0;
         }
 
         .story-excerpt.collapsed {
@@ -474,7 +474,7 @@
         }
 
         .story-excerpt.expanded {
-            max-height: 2000px;
+            max-height: 5000px; /* Increased for long story */
         }
 
         .story-excerpt:after {
@@ -487,6 +487,7 @@
             background: linear-gradient(to bottom, transparent, var(--cream));
             transition: opacity 0.3s ease;
             pointer-events: none;
+            opacity: 1;
         }
 
         .story-excerpt.expanded:after {
@@ -758,6 +759,10 @@
             }
             
             .story-excerpt {
+                max-height: 150px;
+            }
+            
+            .story-excerpt.collapsed {
                 max-height: 150px;
             }
         }
@@ -1083,13 +1088,29 @@
             }
         });
         
-        // Collapsible story functionality
+        // FIXED: Collapsible story functionality - now only toggles the specific story
         document.querySelectorAll('.read-more-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const targetId = this.getAttribute('data-target');
                 const excerpt = document.getElementById(targetId);
+                const isCollapsed = excerpt.classList.contains('collapsed');
                 
-                if (excerpt.classList.contains('collapsed')) {
+                // Close all other expanded stories
+                document.querySelectorAll('.story-excerpt.expanded').forEach(expandedExcerpt => {
+                    if (expandedExcerpt.id !== targetId) {
+                        expandedExcerpt.classList.remove('expanded');
+                        expandedExcerpt.classList.add('collapsed');
+                        // Find and update the corresponding button
+                        const correspondingBtn = document.querySelector(`.read-more-btn[data-target="${expandedExcerpt.id}"]`);
+                        if (correspondingBtn) {
+                            correspondingBtn.innerHTML = '<span>Read Full Story</span><i class="fas fa-chevron-down"></i>';
+                            correspondingBtn.classList.remove('expanded');
+                        }
+                    }
+                });
+                
+                // Toggle the clicked story
+                if (isCollapsed) {
                     // Expand
                     excerpt.classList.remove('collapsed');
                     excerpt.classList.add('expanded');
