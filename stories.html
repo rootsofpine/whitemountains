@@ -277,12 +277,11 @@
             visibility: visible;
         }
 
-        /* ==================== HERO SECTION ==================== */
-        .hero {
-            height: 60vh;
-            min-height: 400px;
+        /* ==================== STORIES HERO WITH PARALLAX ==================== */
+        .stories-hero {
+            height: 100vh;
             background: 
-                linear-gradient(rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.7)),
+                linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/storytelling.jpg') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
@@ -293,32 +292,25 @@
             color: var(--white);
             padding-top: 80px;
             position: relative;
+            min-height: 600px;
+            margin-bottom: 4rem;
         }
 
         @media (max-width: 768px) {
-            .hero {
+            .stories-hero {
                 background-attachment: scroll;
+                height: 80vh;
+                padding-top: 70px;
+                min-height: 500px;
             }
         }
 
-        .hero-content {
+        .stories-hero-content {
             max-width: 900px;
             padding: 3rem;
-            animation: fadeInUp 1s ease 0.3s both;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
+        .stories-hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             color: var(--white);
@@ -326,24 +318,25 @@
             line-height: 1.2;
         }
 
-        .hero p {
+        .stories-hero p {
             font-size: 1.3rem;
             line-height: 1.7;
             font-weight: 300;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
-        /* ==================== MAIN CONTENT ==================== */
-        .section {
+        /* ==================== INTRODUCTION SECTION ==================== */
+        .intro-section {
             padding: 5rem 0;
+            background-color: var(--cream);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
@@ -364,30 +357,45 @@
             transform: translateX(-50%);
         }
 
-        .intro-text {
-            max-width: 800px;
-            margin: 0 auto 4rem;
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
-            font-size: 1.15rem;
-            color: var(--medium-gray);
-            line-height: 1.8;
         }
 
-        /* Story Cards */
+        .intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+
+        /* ==================== STORIES SECTION ==================== */
+        .stories-section {
+            padding: 5rem 0;
+            background-color: var(--light-brown);
+        }
+
+        .stories-section .section-title h2 {
+            color: var(--pine-green);
+        }
+
         .stories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 3rem;
-            margin-bottom: 4rem;
         }
 
         .story-card {
-            background-color: var(--white);
-            border-radius: 8px;
+            background-color: var(--cream);
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             border: 1px solid rgba(139, 69, 19, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .story-card:hover {
@@ -396,10 +404,9 @@
         }
 
         .story-image {
-            width: 100%;
-            height: 250px;
+            height: 300px;
             overflow: hidden;
-            background-color: var(--light-gray);
+            position: relative;
         }
 
         .story-image img {
@@ -410,74 +417,132 @@
         }
 
         .story-card:hover .story-image img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .story-content {
             padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .story-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--pine-green);
         }
 
         .story-meta {
             display: flex;
-            align-items: center;
             gap: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--tree-brown);
+            font-weight: 500;
         }
 
         .story-meta i {
-            margin-right: 0.4rem;
-        }
-
-        .story-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--pine-green);
+            margin-right: 0.5rem;
         }
 
         .story-excerpt {
             font-size: 1.05rem;
-            color: var(--medium-gray);
             line-height: 1.7;
+            color: var(--medium-gray);
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .story-author {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            margin-top: auto;
             font-style: italic;
             color: var(--tree-brown);
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(139, 69, 19, 0.1);
-            padding-top: 1rem;
+            line-height: 1.6;
         }
 
-        /* Call to Action Section */
-        .cta-section {
+        /* ==================== QUOTE SECTION ==================== */
+        .quote-section {
+            padding: 5rem 0;
             background-color: var(--pine-green);
             color: var(--white);
-            text-align: center;
-            padding: 4rem 0;
         }
 
-        .cta-section h2 {
+        .quote-section .section-title h2 {
             color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 2.2rem;
         }
 
-        .cta-section p {
-            font-size: 1.15rem;
+        .quote-section .section-title h2:after {
+            background-color: var(--sky-blue);
+        }
+
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--sky-blue);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            font-family: 'Merriweather', serif;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            padding: 5rem 0;
+            background-color: var(--tree-brown);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section .section-title h2 {
+            color: var(--white);
+        }
+
+        .cta-section .section-title h2:after {
+            background-color: var(--white);
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
             margin-bottom: 2rem;
             color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--tree-brown);
+            background-color: var(--pine-green);
             color: var(--white);
             padding: 1rem 2.5rem;
             text-decoration: none;
@@ -485,9 +550,10 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: 1px solid var(--tree-brown);
+            border: 2px solid var(--pine-green);
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            margin-top: 1rem;
         }
 
         .cta-button:hover {
@@ -497,43 +563,7 @@
             transform: translateY(-2px);
         }
 
-        /* Quote Section */
-        .quote-section {
-            background-color: var(--light-brown);
-            padding: 4rem 0;
-        }
-
-        .quote-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 2.5rem;
-            color: var(--pine-green);
-            opacity: 0.3;
-            margin-bottom: 1.5rem;
-        }
-
-        .quote {
-            font-size: 1.6rem;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--medium-gray);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            font-family: 'Merriweather', serif;
-        }
-
-        .quote-author {
-            font-size: 1.1rem;
-            color: var(--tree-brown);
-            font-weight: 500;
-        }
-
-        /* Footer */
+        /* ==================== FOOTER ==================== */
         footer {
             background-color: var(--dark-gray);
             color: var(--white);
@@ -608,17 +638,16 @@
 
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 992px) {
-            .stories-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 2rem;
-            }
-            
-            .hero h1 {
+            .stories-hero h1 {
                 font-size: 2.8rem;
             }
             
             .section {
                 padding: 4rem 0;
+            }
+            
+            .stories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -631,16 +660,18 @@
                 display: none;
             }
             
-            .hero {
+            .stories-hero {
                 padding-top: 70px;
                 background-attachment: scroll;
+                height: 80vh;
+                min-height: 500px;
             }
             
-            .hero h1 {
+            .stories-hero h1 {
                 font-size: 2.4rem;
             }
             
-            .hero p {
+            .stories-hero p {
                 font-size: 1.2rem;
             }
             
@@ -648,25 +679,25 @@
                 font-size: 2.2rem;
             }
             
-            .quote {
-                font-size: 1.4rem;
-            }
-            
             .nav-mobile {
                 width: 85%;
             }
-
-            .stories-grid {
-                grid-template-columns: 1fr;
+            
+            .story-image {
+                height: 250px;
+            }
+            
+            .quote {
+                font-size: 1.4rem;
             }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
+            .stories-hero h1 {
                 font-size: 2rem;
             }
             
-            .hero p {
+            .stories-hero p {
                 font-size: 1.1rem;
             }
             
@@ -678,10 +709,6 @@
                 font-size: 1.9rem;
             }
             
-            .quote {
-                font-size: 1.3rem;
-            }
-            
             .logo-text {
                 font-size: 1.4rem;
             }
@@ -689,9 +716,17 @@
             .logo-text span {
                 font-size: 0.9rem;
             }
-
+            
+            .story-image {
+                height: 220px;
+            }
+            
             .story-content {
                 padding: 1.5rem;
+            }
+            
+            .quote {
+                font-size: 1.3rem;
             }
         }
 
@@ -704,6 +739,16 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
     </style>
 </head>
 <body>
@@ -757,76 +802,87 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <!-- Stories Hero Section -->
+    <section class="stories-hero">
+        <div class="stories-hero-content">
             <h1>Your Stories</h1>
-            <p>The mountains hold more stories than any one person could tell. These are yours—memories, moments, and connections to this place that runs deeper than tourism or passing through.</p>
+            <p>The mountains hold more stories than any one person could tell. Here are the memories and moments that bind you to this place—connections that transcend the ordinary passage of time.</p>
         </div>
     </section>
 
-    <!-- Stories Section -->
-    <section class="section">
+    <!-- Introduction Section -->
+    <section class="intro-section">
         <div class="container">
             <div class="section-title">
                 <h2>Stories From Our Community</h2>
             </div>
-            <div class="intro-text">
-                <p>Every stone wall has a story. Every trail remembers footsteps. Every family that's stayed has reasons that go beyond logic. Here are the voices of people who know these mountains not as visitors but as home.</p>
+            <div class="intro-content">
+                <p>Every stone wall remembers. Every trail keeps its counsel. Every family who has stayed carries reasons that defy simple accounting. What follows are the voices of those who know these mountains as home.</p>
             </div>
+        </div>
+    </section>
 
+    <!-- Stories Section -->
+    <section class="stories-section">
+        <div class="container">
             <div class="stories-grid">
                 <!-- Story Card 1 - First submitted story -->
                 <article class="story-card fade-in">
                     <div class="story-image">
-                        <img src="images/story-1.jpg" alt="Expressionist painting of mountain dawn">
+                        <img src="images/story-1.jpg" alt="Expressionist painting of mountain dawn" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'; this.alt='Mountain Dawn';">
                     </div>
                     <div class="story-content">
-                        <div class="story-meta">
-                            <span><i class="fas fa-calendar-alt"></i>December 2023</span>
-                            <span><i class="fas fa-map-marker-alt"></i>North Conway</span>
+                        <div class="story-header">
+                            <h3>The Morning My Grandfather Showed Me</h3>
+                            <div class="story-meta">
+                                <span><i class="fas fa-calendar-alt"></i>December 2023</span>
+                                <span><i class="fas fa-map-marker-alt"></i>North Conway</span>
+                            </div>
                         </div>
-                        <h3>The Morning My Grandfather Showed Me</h3>
-                        <p class="story-excerpt">
+                        <div class="story-excerpt">
                             I was seven when he took me up before dawn. We didn't talk much—that wasn't his way. But when the sun broke over the ridge and hit the frost on the pines, turning everything to gold and diamond, he just stood there. "This," he said, "is why we stay." Thirty years later, I understand.
-                        </p>
-                        <p class="story-author">— Submitted by Sarah M.</p>
+                        </div>
+                        <div class="story-author">— Submitted by Sarah M.</div>
                     </div>
                 </article>
 
                 <!-- Placeholder Story Card 2 -->
                 <article class="story-card fade-in">
                     <div class="story-image">
-                        <img src="images/story-2.jpg" alt="Expressionist painting of winter forest">
+                        <img src="images/story-2.jpg" alt="Expressionist painting of winter forest" onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'; this.alt='Winter Forest';">
                     </div>
                     <div class="story-content">
-                        <div class="story-meta">
-                            <span><i class="fas fa-calendar-alt"></i>Coming Soon</span>
-                            <span><i class="fas fa-map-marker-alt"></i>Your Town</span>
+                        <div class="story-header">
+                            <h3>Your Story Could Be Here</h3>
+                            <div class="story-meta">
+                                <span><i class="fas fa-calendar-alt"></i>Coming Soon</span>
+                                <span><i class="fas fa-map-marker-alt"></i>Your Town</span>
+                            </div>
                         </div>
-                        <h3>Your Story Could Be Here</h3>
-                        <p class="story-excerpt">
-                            The mountains have touched your life in ways that matter. Maybe it's a memory from childhood, a moment of clarity on a difficult trail, or the quiet wisdom of a neighbor who's lived here for generations. We want to hear it.
-                        </p>
-                        <p class="story-author">— Share your story below</p>
+                        <div class="story-excerpt">
+                            Perhaps the mountains have touched your life in ways that persist. A memory from childhood. A moment of clarity on a difficult trail. The quiet wisdom of a neighbor who has lived here through many seasons. We would like to hear it.
+                        </div>
+                        <div class="story-author">— Share your story below</div>
                     </div>
                 </article>
 
                 <!-- Placeholder Story Card 3 -->
                 <article class="story-card fade-in">
                     <div class="story-image">
-                        <img src="images/story-3.jpg" alt="Expressionist painting of mountain community">
+                        <img src="images/story-3.jpg" alt="Expressionist painting of mountain community" onerror="this.src='https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'; this.alt='Mountain Community';">
                     </div>
                     <div class="story-content">
-                        <div class="story-meta">
-                            <span><i class="fas fa-calendar-alt"></i>Coming Soon</span>
-                            <span><i class="fas fa-map-marker-alt"></i>Your Town</span>
+                        <div class="story-header">
+                            <h3>More Stories Waiting</h3>
+                            <div class="story-meta">
+                                <span><i class="fas fa-calendar-alt"></i>Coming Soon</span>
+                                <span><i class="fas fa-map-marker-alt"></i>Your Town</span>
+                            </div>
                         </div>
-                        <h3>More Stories Waiting</h3>
-                        <p class="story-excerpt">
-                            Every family that's weathered these winters has a story. Every person who's chosen to stay when they could have left has a reason. Every moment of connection to this landscape matters. Add your voice to the collection.
-                        </p>
-                        <p class="story-author">— Your story matters</p>
+                        <div class="story-excerpt">
+                            Every family that has weathered these winters carries understanding. Every person who has chosen to remain when they might have left knows something. Every moment of true connection to this landscape becomes part of its memory. Add your voice to what endures.
+                        </div>
+                        <div class="story-author">— Your story matters</div>
                     </div>
                 </article>
             </div>
@@ -836,12 +892,15 @@
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container">
+            <div class="section-title">
+                <h2>The Power of Shared Stories</h2>
+            </div>
             <div class="quote-container">
                 <div class="quote-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
                 <blockquote class="quote">
-                    Stories are the thread that connects us to this place and to each other. They're how we remember what matters, how we pass along wisdom that can't be taught in any other way.
+                    Stories are the thread that binds us to this place and to each other. They preserve what matters, convey wisdom that resists formal instruction, and pass along truths that belong to lived experience rather than doctrine.
                 </blockquote>
                 <p class="quote-author">— The Spirit of These Mountains</p>
             </div>
@@ -851,9 +910,13 @@
     <!-- Call to Action Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Share Your Story</h2>
-            <p>If these mountains have shaped your life, if you have a memory that matters, if there's something you want the next generation to know—we want to hear from you. Real stories from real people who call this place home.</p>
-            <a href="contact.html" class="cta-button">Submit Your Story</a>
+            <div class="section-title">
+                <h2>Share Your Story</h2>
+            </div>
+            <div class="cta-content">
+                <p>If these mountains have shaped your understanding, if you carry a memory worth preserving, if you know something the next generation should inherit—we would like to hear from you. Real stories from real people who call this place home.</p>
+                <a href="contact.html" class="cta-button">Submit Your Story</a>
+            </div>
         </div>
     </section>
 
@@ -864,7 +927,7 @@
                 <div class="footer-column">
                     <h3>White Mountains Spirit</h3>
                     <div class="footer-about">
-                        <p>Made by people who know these mountains as home, who live here and love this place. Every story here is rooted in real lives, real history, real connection. We're just passing along what the land has taught us.</p>
+                        <p>Made by people who know these mountains as home, who live here and love this place. Every story here grows from real lives, real history, real connection. We pass along what the land has taught us.</p>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -928,12 +991,12 @@
             }
         });
         
-        // Fade in animation on scroll
+        // Initialize animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -941,9 +1004,10 @@
                 }
             });
         }, observerOptions);
-        
-        document.querySelectorAll('.story-card').forEach(card => {
-            observer.observe(card);
+
+        // Observe elements for fade-in animation
+        document.querySelectorAll('.story-card').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
