@@ -361,7 +361,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -375,12 +375,12 @@
         }
 
         .era-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
         }
 
         .era-header {
-            padding: 2.5rem 2.5rem 0;
+            padding: 2.5rem 2.5rem 1.5rem;
             position: relative;
         }
 
@@ -404,20 +404,8 @@
             line-height: 1.2;
         }
 
-        .era-content-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-        }
-
-        @media (max-width: 992px) {
-            .era-content-wrapper {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .era-text {
-            padding: 0 2.5rem 2.5rem;
+            padding: 0 2.5rem 2rem;
         }
 
         .era-text p {
@@ -427,36 +415,36 @@
             color: var(--medium-gray);
         }
 
+        /* NEW: Centered image below text */
+        .era-image-container {
+            padding: 0 2.5rem 2.5rem;
+            text-align: center;
+        }
+
         .era-image {
-            height: 100%;
-            min-height: 400px;
+            display: inline-block;
+            max-width: 700px; /* Smaller than full width */
+            width: 100%;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: var(--deep-shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .era-card:hover .era-image {
+            transform: translateY(-5px);
         }
 
         .era-image img {
             width: 100%;
-            height: 100%;
+            height: 300px; /* Fixed smaller height */
             object-fit: cover;
             display: block;
             transition: transform 0.7s ease;
         }
 
         .era-card:hover .era-image img {
-            transform: scale(1.05);
-        }
-
-        /* Alternate layout for even cards */
-        .era-card:nth-child(even) .era-content-wrapper {
-            direction: rtl;
-        }
-
-        .era-card:nth-child(even) .era-text {
-            direction: ltr;
-            padding: 0 2.5rem 2.5rem;
-        }
-
-        .era-card:nth-child(even) .era-image {
-            direction: ltr;
+            transform: scale(1.03);
         }
 
         /* ==================== TRANSCENDENTALIST SECTION ==================== */
@@ -515,13 +503,12 @@
         }
 
         .appeal-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .appeal-text {
-            flex: 1.2;
+            margin-bottom: 2.5rem;
         }
 
         .appeal-text p {
@@ -531,17 +518,31 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
+        /* NEW: Centered smaller image for appeal section */
+        .appeal-image-container {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
         .appeal-image {
-            flex: 1;
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             border: 8px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .appeal-section:hover .appeal-image {
+            transform: translateY(-5px);
         }
 
         .appeal-image img {
             width: 100%;
-            height: auto;
+            height: 300px;
+            object-fit: cover;
             display: block;
         }
 
@@ -552,13 +553,12 @@
         }
 
         .logging-era-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .logging-era-text {
-            flex: 1.2;
+            margin-bottom: 2.5rem;
         }
 
         .logging-era-text p {
@@ -568,23 +568,36 @@
             line-height: 1.8;
         }
 
+        /* NEW: Centered smaller image for logging era section */
+        .logging-era-image-container {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
         .logging-era-image {
-            flex: 1;
+            display: inline-block;
+            max-width: 700px;
+            width: 100%;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--deep-shadow);
             transition: transform 0.5s ease;
         }
 
-        .logging-era-image:hover {
-            transform: translateY(-10px);
+        .logging-era-section:hover .logging-era-image {
+            transform: translateY(-5px);
         }
 
         .logging-era-image img {
             width: 100%;
-            height: 400px;
+            height: 300px;
             object-fit: cover;
             display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .logging-era-section:hover .logging-era-image img {
+            transform: scale(1.03);
         }
 
         /* ==================== HISTORIC SITES SECTION ==================== */
@@ -624,7 +637,7 @@
         }
 
         .site-image {
-            height: 250px;
+            height: 200px; /* Smaller than before */
             overflow: hidden;
         }
 
@@ -640,7 +653,7 @@
         }
 
         .site-info {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .site-info h3 {
@@ -751,14 +764,6 @@
 
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 992px) {
-            .appeal-content, .logging-era-content {
-                flex-direction: column;
-            }
-            
-            .appeal-image, .logging-era-image {
-                order: -1;
-            }
-            
             .history-hero h1 {
                 font-size: 2.8rem;
             }
@@ -769,6 +774,10 @@
             
             .era-card h2 {
                 font-size: 1.9rem;
+            }
+            
+            .era-image {
+                max-width: 90%;
             }
         }
 
@@ -803,16 +812,30 @@
             }
             
             .era-header {
-                padding: 2rem 2rem 0;
+                padding: 2rem 2rem 1rem;
             }
             
             .era-text {
+                padding: 0 2rem 1.5rem;
+            }
+            
+            .era-image-container {
                 padding: 0 2rem 2rem;
+            }
+            
+            .era-image img,
+            .appeal-image img,
+            .logging-era-image img {
+                height: 250px;
             }
             
             .transcendentalist-quote {
                 font-size: 1.2rem;
                 padding-left: 1.5rem;
+            }
+            
+            .site-image {
+                height: 180px;
             }
         }
 
@@ -851,9 +874,26 @@
                 font-size: 1.7rem;
             }
             
+            .era-image img,
+            .appeal-image img,
+            .logging-era-image img {
+                height: 200px;
+            }
+            
+            .era-image,
+            .appeal-image,
+            .logging-era-image {
+                max-width: 95%;
+            }
+            
             .transcendentalist-quote {
                 font-size: 1.1rem;
                 padding-left: 1rem;
+                margin: 2rem auto;
+            }
+            
+            .site-image {
+                height: 160px;
             }
         }
 
@@ -945,12 +985,12 @@
                         <div class="era-year">Before Maps Had Names</div>
                         <h2>The First People</h2>
                     </div>
-                    <div class="era-content-wrapper">
-                        <div class="era-text">
-                            <p>Long before anyone thought to draw borders or claim ownership, the Abenaki knew every stream and ridge in these mountains. They knew them the way you know the rooms of your childhood home in the dark—by feel, by memory held in the body.</p>
-                            <p>They called this place Wōbanaki, the Dawnland, because here the sun first touches the eastern shore of Turtle Island each morning. Their knowledge of these mountains wasn't written down because it didn't need to be. It lived in the stories elders told children, in the routes taken between summer and winter camps, in knowing which plants heal and which slopes hold snow longest.</p>
-                            <p>When we hike the Pemigewasset Wilderness or fish the Saco River today, we're following paths they established. The old trails knew something our modern maps are still learning—the best route works with the land instead of against it.</p>
-                        </div>
+                    <div class="era-text">
+                        <p>Long before anyone thought to draw borders or claim ownership, the Abenaki knew every stream and ridge in these mountains. They knew them the way you know the rooms of your childhood home in the dark—by feel, by memory held in the body.</p>
+                        <p>They called this place Wōbanaki, the Dawnland, because here the sun first touches the eastern shore of Turtle Island each morning. Their knowledge of these mountains wasn't written down because it didn't need to be. It lived in the stories elders told children, in the routes taken between summer and winter camps, in knowing which plants heal and which slopes hold snow longest.</p>
+                        <p>When we hike the Pemigewasset Wilderness or fish the Saco River today, we're following paths they established. The old trails knew something our modern maps are still learning—the best route works with the land instead of against it.</p>
+                    </div>
+                    <div class="era-image-container">
                         <div class="era-image">
                             <img src="images/abenaki-era.jpg" alt="Abenaki cultural representation" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Native American cultural representation';">
                         </div>
@@ -963,12 +1003,12 @@
                         <div class="era-year">1642-1780s</div>
                         <h2>When Strangers Became Neighbors</h2>
                     </div>
-                    <div class="era-content-wrapper">
-                        <div class="era-text">
-                            <p>The European families who arrived with their iron plows and notions of property thought they were taming wilderness. The mountains had other ideas. You can read the whole story in those stone walls that wander through the woods now—testament to dreams of farming land that never quite cooperated, built by hands that learned humility the hard way.</p>
-                            <p>But something happens when you spend enough winters in a place where nature sets the terms. The distance between you and your neighbor stops mattering as much as whether you can count on them when the snow comes early. Those early settlements became agreements, spoken and unspoken, about mutual survival.</p>
-                            <p>When the Revolution came, it found fertile ground here. These people had already learned that legitimate authority comes from consent, not decree. When you've survived by relying on your neighbors' word more than any distant government's promise, the idea of self-governance doesn't seem radical—it seems obvious.</p>
-                        </div>
+                    <div class="era-text">
+                        <p>The European families who arrived with their iron plows and notions of property thought they were taming wilderness. The mountains had other ideas. You can read the whole story in those stone walls that wander through the woods now—testament to dreams of farming land that never quite cooperated, built by hands that learned humility the hard way.</p>
+                        <p>But something happens when you spend enough winters in a place where nature sets the terms. The distance between you and your neighbor stops mattering as much as whether you can count on them when the snow comes early. Those early settlements became agreements, spoken and unspoken, about mutual survival.</p>
+                        <p>When the Revolution came, it found fertile ground here. These people had already learned that legitimate authority comes from consent, not decree. When you've survived by relying on your neighbors' word more than any distant government's promise, the idea of self-governance doesn't seem radical—it seems obvious.</p>
+                    </div>
+                    <div class="era-image-container">
                         <div class="era-image">
                             <img src="images/early-settlement.jpg" alt="Early settler cabin in the mountains" onerror="this.src='https://images.unsplash.com/photo-1584467735871-8db9ac8d0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Early settler cabin';">
                         </div>
@@ -981,12 +1021,12 @@
                         <div class="era-year">1800-1850</div>
                         <h2>The Timber Years</h2>
                     </div>
-                    <div class="era-content-wrapper">
-                        <div class="era-text">
-                            <p>If you want to understand what happened to these mountains in the 1800s, look at any New England mill town and count the houses. Each one represents trees that came from somewhere. A lot of them came from here. The sound of axes against white pine became the soundtrack of a half-century, echoing through valleys from dawn until the light failed.</p>
-                            <p>The logging camps had their own rough democracy. Men from a dozen different places—Irish immigrants, French Canadians, New Englanders whose farms had failed—lived in close quarters all winter, their survival depending on trusting strangers to watch their back when a tree started to fall the wrong way. They developed their own code, their own songs, their own saints and legends.</p>
-                            <p>Come April, the rivers transformed into highways. Log drives turned quiet streams into chaos—men with pike poles riding the timber downstream, their lives balanced on floating wood, their skill the only thing between them and drowning. The rivers have quieted now, but if you know where to look, you can still find boom logs wedged between rocks, forgotten souvenirs of an industry that seemed like it would last forever.</p>
-                        </div>
+                    <div class="era-text">
+                        <p>If you want to understand what happened to these mountains in the 1800s, look at any New England mill town and count the houses. Each one represents trees that came from somewhere. A lot of them came from here. The sound of axes against white pine became the soundtrack of a half-century, echoing through valleys from dawn until the light failed.</p>
+                        <p>The logging camps had their own rough democracy. Men from a dozen different places—Irish immigrants, French Canadians, New Englanders whose farms had failed—lived in close quarters all winter, their survival depending on trusting strangers to watch their back when a tree started to fall the wrong way. They developed their own code, their own songs, their own saints and legends.</p>
+                        <p>Come April, the rivers transformed into highways. Log drives turned quiet streams into chaos—men with pike poles riding the timber downstream, their lives balanced on floating wood, their skill the only thing between them and drowning. The rivers have quieted now, but if you know where to look, you can still find boom logs wedged between rocks, forgotten souvenirs of an industry that seemed like it would last forever.</p>
+                    </div>
+                    <div class="era-image-container">
                         <div class="era-image">
                             <img src="images/logging-era.jpg" alt="Historical logging in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historical logging';">
                         </div>
@@ -1034,8 +1074,10 @@
                     
                     <p>The revolutionary era ended, but something of that spirit remained in these valleys. You can see it in the way communities still pull together when someone's in trouble, in the stubborn insistence on doing things the right way even when the easy way beckons, in the faith—quieter now, less advertised, but still present—that justice matters more than success and character counts for more than wealth.</p>
                 </div>
-                <div class="appeal-image">
-                    <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/An_Appeal_to_Heaven_Flag.svg/1200px-An_Appeal_to_Heaven_Flag.svg.png'; this.alt='Appeal to Heaven Flag';">
+                <div class="appeal-image-container">
+                    <div class="appeal-image">
+                        <img src="images/pine-tree-flag.jpg" alt="Appeal to Heaven Flag with Pine Tree" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/An_Appeal_to_Heaven_Flag.svg/1200px-An_Appeal_to_Heaven_Flag.svg.png'; this.alt='Appeal to Heaven Flag';">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1055,8 +1097,10 @@
                     
                     <p>If you walk the woods now, you can still read their passage. A level spot where a camp once stood. Moss-covered stumps that tell you where the big trees grew. Old roads that follow the contours so perfectly you know they were laid out by men who understood the land. The logging era scarred these mountains, yes—but it also taught lessons about limits, about what happens when you take too much too fast, lessons we're still trying to learn.</p>
                 </div>
-                <div class="logging-era-image">
-                    <img src="images/logging-camp.jpg" alt="Historical logging camp in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Logging camp';">
+                <div class="logging-era-image-container">
+                    <div class="logging-era-image">
+                        <img src="images/logging-camp.jpg" alt="Historical logging camp in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Logging camp';">
+                    </div>
                 </div>
             </div>
         </div>
