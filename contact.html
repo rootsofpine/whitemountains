@@ -523,6 +523,45 @@
             font-style: italic;
         }
 
+        /* Success and Error Messages */
+        .form-message {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-success {
+            background-color: rgba(10, 92, 54, 0.1);
+            color: var(--pine-green);
+            border: 1px solid rgba(10, 92, 54, 0.2);
+        }
+
+        .form-error {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+
+        /* Loading state */
+        .submit-button.loading {
+            background-color: var(--medium-gray);
+            cursor: not-allowed;
+        }
+
+        .submit-button.loading:after {
+            content: '...';
+            animation: loading 1s infinite;
+        }
+
+        @keyframes loading {
+            0%, 100% { content: '.'; }
+            33% { content: '..'; }
+            66% { content: '...'; }
+        }
+
         /* ==================== COMMUNITY SECTION ==================== */
         .community-section {
             padding: 5rem 0;
@@ -849,7 +888,16 @@
                     <p>Whether you have a story to share, a question about our archives, or thoughts about the White Mountains spirit, we're listening.</p>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
+                <!-- Added Formspree action URL -->
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xykdgzqj" method="POST">
+                    <!-- Success/Error Messages -->
+                    <div class="form-message form-success" id="successMessage">
+                        Thank you! Your message has been sent successfully. We'll respond within 3-5 days.
+                    </div>
+                    <div class="form-message form-error" id="errorMessage">
+                        There was an error sending your message. Please try again or email us directly.
+                    </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -878,10 +926,13 @@
                         <textarea id="message" name="message" required placeholder="Tell us about your connection to the White Mountains..."></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-button">Send Your Message</button>
+                    <!-- Honeypot spam filter (hidden from users) -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <button type="submit" class="submit-button" id="submitButton">Send Your Message</button>
                     
                     <div class="form-note">
-                        <p>Your message will be sent directly to solarforester@proton.me. We typically respond within 3-5 days.</p>
+                        <p>Your message will be sent directly to our team. We typically respond within 3-5 days.</p>
                     </div>
                 </form>
             </div>
@@ -981,29 +1032,82 @@
             }
         });
         
-        // Contact form submission
+        // Contact form submission with Formspree
         const contactForm = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
         
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Hide any previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
             
-            // Create mailto link
-            const mailtoLink = `mailto:solarforester@proton.me?subject=${encodeURIComponent(subject)} - Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            // Show loading state
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
             
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('Thank you for your message. Your email client will open with a pre-filled message. Please send it to complete your submission.');
-            
-            // Reset form
-            contactForm.reset();
+            try {
+                // Prepare form data
+                const formData = new FormData(this);
+                
+                // Send to Formspree
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    const data = await response.json();
+                    console.error('Formspree error:', data);
+                    
+                    // Show error message
+                    errorMessage.style.display = 'block';
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+                
+                // Show error message
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Fallback to mailto if Formspree fails
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && subject && message) {
+                    const mailtoLink = `mailto:solarforester@proton.me?subject=${encodeURIComponent(subject)} - Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                    setTimeout(() => {
+                        if (confirm('Form submission failed. Would you like to send your message via email instead?')) {
+                            window.location.href = mailtoLink;
+                        }
+                    }, 500);
+                }
+            } finally {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.classList.remove('loading');
+                submitButton.disabled = false;
+            }
         });
         
         // Initialize animations
