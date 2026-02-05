@@ -279,27 +279,27 @@
 
         /* ==================== HISTORY HERO WITH PARALLAX - FIXED ==================== */
         .history-hero {
-            height: 100vh; /* CHANGED FROM 70vh to 100vh */
+            height: 100vh;
             background: 
                 linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.7)),
                 url('images/history-banner.jpg') no-repeat center center;
             background-size: cover;
-            background-attachment: fixed; /* Parallax effect */
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding-top: 80px; /* Account for fixed header */
+            padding-top: 80px;
             position: relative;
-            min-height: 600px; /* Ensure enough height on very short screens */
+            min-height: 600px;
         }
 
         /* Mobile: remove fixed background for better performance */
         @media (max-width: 768px) {
             .history-hero {
-                background-attachment: scroll; /* Remove parallax on mobile for performance */
-                height: 80vh; /* Adjust for mobile */
+                background-attachment: scroll;
+                height: 80vh;
                 padding-top: 70px;
                 min-height: 500px;
             }
@@ -328,8 +328,8 @@
             opacity: 0.9;
         }
 
-        /* ==================== TIMELINE SECTION ==================== */
-        .timeline-section {
+        /* ==================== NEW ERA CARDS LAYOUT ==================== */
+        .eras-container {
             padding: 5rem 0;
             background-color: var(--cream);
         }
@@ -357,135 +357,106 @@
             transform: translateX(-50%);
         }
 
-        .timeline {
-            position: relative;
+        .era-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .timeline:before {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background-color: var(--tree-brown);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-        }
-
-        .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 60px;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 60px;
-        }
-
-        .timeline-content {
-            padding: 2rem;
-            background-color: var(--light-brown);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            position: relative;
-            transition: transform 0.3s ease;
+        .era-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--deep-shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             border: 1px solid rgba(139, 69, 19, 0.1);
         }
 
-        .timeline-content:hover {
-            transform: translateY(-5px);
+        .era-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .timeline-year {
+        .era-header {
+            padding: 2.5rem 2.5rem 0;
+            position: relative;
+        }
+
+        .era-year {
+            display: inline-block;
             font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--tree-brown);
-            margin-bottom: 0.5rem;
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(139, 69, 19, 0.2);
         }
 
-        .timeline-title {
-            font-size: 1.4rem;
+        .era-card h2 {
+            font-size: 2.2rem;
             margin-bottom: 1rem;
             color: var(--pine-green);
+            line-height: 1.2;
         }
 
-        .timeline-text {
-            font-size: 1.05rem;
-            line-height: 1.7;
+        .era-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        @media (max-width: 992px) {
+            .era-content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .era-text {
+            padding: 0 2.5rem 2.5rem;
+        }
+
+        .era-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--medium-gray);
         }
 
-        .timeline-image {
-            margin-top: 1.5rem;
-            border-radius: 6px;
+        .era-image {
+            height: 100%;
+            min-height: 400px;
             overflow: hidden;
-            box-shadow: var(--shadow);
         }
 
-        .timeline-image img {
+        .era-image img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s ease;
         }
 
-        .timeline-image img:hover {
-            transform: scale(1.03);
+        .era-card:hover .era-image img {
+            transform: scale(1.05);
         }
 
-        .timeline-item:nth-child(odd) .timeline-content:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--light-brown);
-            top: 40px;
-            transform: rotate(45deg);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        /* Alternate layout for even cards */
+        .era-card:nth-child(even) .era-content-wrapper {
+            direction: rtl;
         }
 
-        .timeline-item:nth-child(even) .timeline-content:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: -10px;
-            background-color: var(--light-brown);
-            top: 40px;
-            transform: rotate(45deg);
-            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        .era-card:nth-child(even) .era-text {
+            direction: ltr;
+            padding: 0 2.5rem 2.5rem;
         }
 
-        .timeline-marker {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: var(--pine-green);
-            border: 4px solid var(--tree-brown);
-            top: 40px;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-marker {
-            right: -12.5px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-marker {
-            left: -12.5px;
+        .era-card:nth-child(even) .era-image {
+            direction: ltr;
         }
 
         /* ==================== TRANSCENDENTALIST SECTION ==================== */
@@ -574,41 +545,30 @@
             display: block;
         }
 
-        /* ==================== ERA SECTIONS ==================== */
-        .era-section {
+        /* ==================== LOGGING ERA SECTION ==================== */
+        .logging-era-section {
             padding: 5rem 0;
-        }
-
-        .era-section:nth-child(odd) {
             background-color: var(--light-brown);
         }
 
-        .era-section:nth-child(even) {
-            background-color: var(--cream);
-        }
-
-        .era-content {
+        .logging-era-content {
             display: flex;
             align-items: center;
             gap: 4rem;
         }
 
-        .era-content.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .era-text {
+        .logging-era-text {
             flex: 1.2;
         }
 
-        .era-text p {
+        .logging-era-text p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
             color: var(--medium-gray);
             line-height: 1.8;
         }
 
-        .era-image {
+        .logging-era-image {
             flex: 1;
             border-radius: 8px;
             overflow: hidden;
@@ -616,11 +576,11 @@
             transition: transform 0.5s ease;
         }
 
-        .era-image:hover {
+        .logging-era-image:hover {
             transform: translateY(-10px);
         }
 
-        .era-image img {
+        .logging-era-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
@@ -791,11 +751,11 @@
 
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 992px) {
-            .era-content, .appeal-content {
+            .appeal-content, .logging-era-content {
                 flex-direction: column;
             }
             
-            .era-image, .appeal-image {
+            .appeal-image, .logging-era-image {
                 order: -1;
             }
             
@@ -803,31 +763,12 @@
                 font-size: 2.8rem;
             }
             
-            .timeline:before {
-                left: 31px;
+            .section-title {
+                margin-bottom: 3rem;
             }
             
-            .timeline-item {
-                width: 100%;
-                padding-left: 80px;
-                padding-right: 20px;
-                left: 0 !important;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content:after,
-            .timeline-item:nth-child(even) .timeline-content:after {
-                left: -10px;
-                right: auto;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-marker,
-            .timeline-item:nth-child(even) .timeline-marker {
-                left: 18.5px;
-                right: auto;
-            }
-            
-            .section {
-                padding: 4rem 0;
+            .era-card h2 {
+                font-size: 1.9rem;
             }
         }
 
@@ -861,13 +802,12 @@
                 width: 85%;
             }
             
-            .timeline-item {
-                padding-left: 70px;
+            .era-header {
+                padding: 2rem 2rem 0;
             }
             
-            .timeline-item:nth-child(odd) .timeline-marker,
-            .timeline-item:nth-child(even) .timeline-marker {
-                left: 8.5px;
+            .era-text {
+                padding: 0 2rem 2rem;
             }
             
             .transcendentalist-quote {
@@ -885,7 +825,8 @@
                 font-size: 1.1rem;
             }
             
-            .section {
+            .eras-container, .transcendentalist-section, .appeal-section, 
+            .logging-era-section, .sites-section {
                 padding: 3rem 0;
             }
             
@@ -901,13 +842,13 @@
                 font-size: 0.9rem;
             }
             
-            .timeline-item {
-                padding-left: 60px;
-                padding-right: 15px;
+            .era-year {
+                font-size: 1.2rem;
+                padding: 0.4rem 1.2rem;
             }
             
-            .timeline-content {
-                padding: 1.5rem;
+            .era-card h2 {
+                font-size: 1.7rem;
             }
             
             .transcendentalist-quote {
@@ -994,56 +935,59 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="timeline-section">
+    <!-- New Era Cards Section (Replaces Timeline) -->
+    <section class="eras-container">
         <div class="container">
-            <div class="section-title">
-                <h2>Stories Carved in Time</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content fade-in">
-                        <div class="timeline-year">Before Maps Had Names</div>
-                        <h3 class="timeline-title">The First People</h3>
-                        <div class="timeline-text">
+            <div class="era-cards-grid">
+                <!-- First Era Card -->
+                <div class="era-card fade-in">
+                    <div class="era-header">
+                        <div class="era-year">Before Maps Had Names</div>
+                        <h2>The First People</h2>
+                    </div>
+                    <div class="era-content-wrapper">
+                        <div class="era-text">
                             <p>Long before anyone thought to draw borders or claim ownership, the Abenaki knew every stream and ridge in these mountains. They knew them the way you know the rooms of your childhood home in the dark—by feel, by memory held in the body.</p>
                             <p>They called this place Wōbanaki, the Dawnland, because here the sun first touches the eastern shore of Turtle Island each morning. Their knowledge of these mountains wasn't written down because it didn't need to be. It lived in the stories elders told children, in the routes taken between summer and winter camps, in knowing which plants heal and which slopes hold snow longest.</p>
                             <p>When we hike the Pemigewasset Wilderness or fish the Saco River today, we're following paths they established. The old trails knew something our modern maps are still learning—the best route works with the land instead of against it.</p>
                         </div>
-                        <div class="timeline-image">
+                        <div class="era-image">
                             <img src="images/abenaki-era.jpg" alt="Abenaki cultural representation" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Native American cultural representation';">
                         </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content fade-in">
-                        <div class="timeline-year">1642-1780s</div>
-                        <h3 class="timeline-title">When Strangers Became Neighbors</h3>
-                        <div class="timeline-text">
+                <!-- Second Era Card -->
+                <div class="era-card fade-in">
+                    <div class="era-header">
+                        <div class="era-year">1642-1780s</div>
+                        <h2>When Strangers Became Neighbors</h2>
+                    </div>
+                    <div class="era-content-wrapper">
+                        <div class="era-text">
                             <p>The European families who arrived with their iron plows and notions of property thought they were taming wilderness. The mountains had other ideas. You can read the whole story in those stone walls that wander through the woods now—testament to dreams of farming land that never quite cooperated, built by hands that learned humility the hard way.</p>
                             <p>But something happens when you spend enough winters in a place where nature sets the terms. The distance between you and your neighbor stops mattering as much as whether you can count on them when the snow comes early. Those early settlements became agreements, spoken and unspoken, about mutual survival.</p>
                             <p>When the Revolution came, it found fertile ground here. These people had already learned that legitimate authority comes from consent, not decree. When you've survived by relying on your neighbors' word more than any distant government's promise, the idea of self-governance doesn't seem radical—it seems obvious.</p>
                         </div>
-                        <div class="timeline-image">
+                        <div class="era-image">
                             <img src="images/early-settlement.jpg" alt="Early settler cabin in the mountains" onerror="this.src='https://images.unsplash.com/photo-1584467735871-8db9ac8d0918?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Early settler cabin';">
                         </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content fade-in">
-                        <div class="timeline-year">1800-1850</div>
-                        <h3 class="timeline-title">The Timber Years</h3>
-                        <div class="timeline-text">
+                <!-- Third Era Card -->
+                <div class="era-card fade-in">
+                    <div class="era-header">
+                        <div class="era-year">1800-1850</div>
+                        <h2>The Timber Years</h2>
+                    </div>
+                    <div class="era-content-wrapper">
+                        <div class="era-text">
                             <p>If you want to understand what happened to these mountains in the 1800s, look at any New England mill town and count the houses. Each one represents trees that came from somewhere. A lot of them came from here. The sound of axes against white pine became the soundtrack of a half-century, echoing through valleys from dawn until the light failed.</p>
                             <p>The logging camps had their own rough democracy. Men from a dozen different places—Irish immigrants, French Canadians, New Englanders whose farms had failed—lived in close quarters all winter, their survival depending on trusting strangers to watch their back when a tree started to fall the wrong way. They developed their own code, their own songs, their own saints and legends.</p>
                             <p>Come April, the rivers transformed into highways. Log drives turned quiet streams into chaos—men with pike poles riding the timber downstream, their lives balanced on floating wood, their skill the only thing between them and drowning. The rivers have quieted now, but if you know where to look, you can still find boom logs wedged between rocks, forgotten souvenirs of an industry that seemed like it would last forever.</p>
                         </div>
-                        <div class="timeline-image">
+                        <div class="era-image">
                             <img src="images/logging-era.jpg" alt="Historical logging in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Historical logging';">
                         </div>
                     </div>
@@ -1098,10 +1042,10 @@
     </section>
 
     <!-- Logging Era Section -->
-    <section class="era-section">
+    <section class="logging-era-section">
         <div class="container">
-            <div class="era-content">
-                <div class="era-text">
+            <div class="logging-era-content">
+                <div class="logging-era-text">
                     <h2>The Long Winter's Work</h2>
                     <p>Picture a January morning in a logging camp, maybe 1830, maybe 1870—the years blur because the routine stayed the same. Men wake in darkness to the sound of the cook banging a pot. Breakfast by lantern light: beans, salt pork, bread that's more sustenance than pleasure. Then out into the cold where your breath hangs in the air and every exhale is a small prayer that the day won't be your last.</p>
                     
@@ -1111,7 +1055,7 @@
                     
                     <p>If you walk the woods now, you can still read their passage. A level spot where a camp once stood. Moss-covered stumps that tell you where the big trees grew. Old roads that follow the contours so perfectly you know they were laid out by men who understood the land. The logging era scarred these mountains, yes—but it also taught lessons about limits, about what happens when you take too much too fast, lessons we're still trying to learn.</p>
                 </div>
-                <div class="era-image">
+                <div class="logging-era-image">
                     <img src="images/logging-camp.jpg" alt="Historical logging camp in the White Mountains" onerror="this.src='https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'; this.alt='Logging camp';">
                 </div>
             </div>
@@ -1258,8 +1202,8 @@
             });
         }, observerOptions);
 
-        // Observe timeline items and site cards for fade-in animation
-        document.querySelectorAll('.timeline-content, .site-card').forEach(el => {
+        // Observe era cards and site cards for fade-in animation
+        document.querySelectorAll('.era-card, .site-card').forEach(el => {
             observer.observe(el);
         });
     </script>
